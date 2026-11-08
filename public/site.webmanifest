@@ -1,0 +1,12 @@
+{
+  "name": "Spunchy Pastry & Bakery",
+  "short_name": "Spunchy",
+  "icons": [
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#C8401C",
+  "background_color": "#FFF7EC",
+  "display": "browser",
+  "start_url": "/"
+}

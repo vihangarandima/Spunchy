@@ -1,0 +1,33 @@
+{
+  "name": "Spunchy",
+  "descriptor": "Pastry & Bakery",
+  "source": "Colours approximated from on-site photos of the signboard and cake boxes (2026-11-08). Replace with exact values once the logo source file is supplied.",
+  "colors": {
+    "ember": { "hex": "#C8401C", "role": "Signboard / box red. Primary brand colour, CTAs, accents.", "contrast": { "onCream": 4.7, "whiteText": 5.0 }, "passesAA": true },
+    "swash": { "hex": "#F5B026", "role": "The yellow swash under the wordmark. Highlights on dark backgrounds only.", "contrast": { "onCream": 1.8, "onCocoa": 8.8 }, "passesAA": "only on dark backgrounds" },
+    "swashText": { "hex": "#8A5A00", "role": "Compliant text variant of the swash yellow for light backgrounds.", "contrast": { "onCream": 5.6 }, "passesAA": true },
+    "cocoa": { "hex": "#2B1A14", "role": "Hanging sign / wood-panel dark. Body text on light, dark section background." },
+    "cream": { "hex": "#FFF7EC", "role": "Page background. Icing and cake-board white, warmed." },
+    "crumb": { "hex": "#6B5348", "role": "Secondary text on cream.", "contrast": { "onCream": 6.7 }, "passesAA": true },
+    "oak": { "hex": "#9A6A44", "role": "Wood panelling. Decorative only (borders, rules)." }
+  },
+  "type": {
+    "display": "Fraunces 600 (+ italic) — close to the serif on the in-store posters",
+    "body": "System UI sans stack (no download)",
+    "sinhala": "Noto Sans Sinhala 400/600, loaded only when Sinhala glyphs are on screen (unicode-range)"
+  },
+  "voice": {
+    "ownWords": [
+      "A slice of heaven in every bite",
+      "Cake is the language of love",
+      "Soft, fluffy & fresh",
+      "Savory — crispy, crunchy, crave-worthy",
+      "Pastry & Bakery"
+    ],
+    "note": "Taken from the client's posters and signboard. Don't invent new claims."
+  },
+  "logo": {
+    "available": ["assets/brand/logo-sign.jpg (photo crop of the shop sign)", "assets/brand/logo-box.jpg (photo crop of a cake box)"],
+    "needed": "Vector (SVG) or high-res PNG with transparent background, light and dark variants."
+  }
+}
