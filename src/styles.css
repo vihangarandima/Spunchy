@@ -57,34 +57,6 @@
     background: radial-gradient(55% 60% at 70% 0%, rgb(247 184 54 / 0.18), transparent 70%), var(--color-night);
   }
 
-  /* Hero backdrop: the blurred real cabinet (scripts/brand-assets.mjs) under a gold
-     top-light and a night vignette, so the text side stays readable. Slow breathing
-     scale keeps it alive even where WebGL doesn't run. */
-  .hero-backdrop {
-    background:
-      radial-gradient(45% 55% at 72% 8%, rgb(247 184 54 / 0.28), transparent 70%),
-      radial-gradient(120% 90% at 70% 40%, transparent 35%, rgb(26 4 8 / 0.92) 100%),
-      linear-gradient(90deg, rgb(34 6 11 / 0.92) 0%, rgb(34 6 11 / 0.45) 45%, transparent 75%),
-      image-set(url('/hero/backdrop-960.webp') 1x, url('/hero/backdrop-1920.webp') 2x) center / cover no-repeat,
-      var(--color-night);
-    transform-origin: 70% 40%;
-    animation: breathe 18s ease-in-out infinite alternate;
-  }
-  @media (max-width: 767.98px) {
-    .hero-backdrop {
-      background:
-        radial-gradient(70% 45% at 50% 18%, rgb(247 184 54 / 0.26), transparent 70%),
-        linear-gradient(180deg, transparent 30%, rgb(34 6 11 / 0.95) 72%),
-        image-set(url('/hero/backdrop-960.webp') 1x, url('/hero/backdrop-1920.webp') 2x) center / cover no-repeat,
-        var(--color-night);
-    }
-  }
-  @keyframes breathe {
-    to { transform: scale(1.06); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .hero-backdrop { animation: none; }
-  }
 
   /* Film grain over the whole page, static (no animated noise) */
   .grain-overlay {

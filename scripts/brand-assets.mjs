@@ -37,30 +37,3 @@ console.log('public/favicon.png, public/apple-touch-icon.png, public/og.jpg')
 // so the HTML can paint it before any JavaScript loads.
 await sharp(await roundLogo(256)).webp({ quality: 86 }).toFile('public/logo-roundel.webp')
 console.log('public/logo-roundel.webp')
-
-// Hero cake at stable public URLs so index.html can preload it alongside the JS bundle
-// (it is the LCP element). The <Hero> uses these same URLs.
-fs.mkdirSync('public/hero', { recursive: true })
-for (const w of [480, 800, 1280, 1920]) {
-  const base = sharp(`${CACHE}/cut/cake-rosettes.png`).trim({ threshold: 1 }).resize(w)
-  await base.clone().avif({ quality: 60, effort: 6 }).toFile(`public/hero/cake-${w}.avif`)
-  await base.clone().webp({ quality: 82, alphaQuality: 90 }).toFile(`public/hero/cake-${w}.webp`)
-}
-console.log('public/hero/cake-{480,800,1280,1920}.{avif,webp}')
-
-// Hero backdrop: the real cake cabinet, heavily blurred into bokeh, overlaid with maroon
-// and sunk into the night, so the hero has depth from the first paint (before WebGL loads).
-for (const w of [960, 1920]) {
-  const h = Math.round(w * 0.62)
-  const rect = (fill, opacity) => Buffer.from(`<svg width="${w}" height="${h}"><rect width="100%" height="100%" fill="${fill}" fill-opacity="${opacity}"/></svg>`)
-  const blurred = await sharp(`${CACHE}/graded/cake-cabinet.png`)
-    .resize({ width: w, height: h, fit: 'cover' })
-    .blur(w / 52)
-    .modulate({ brightness: 1.05, saturation: 1.2 })
-    .toBuffer()
-  await sharp(blurred)
-    .composite([{ input: rect('#7a1523', 1), blend: 'overlay' }, { input: rect('#3a0a12', 0.62) }])
-    .webp({ quality: 72 })
-    .toFile(`public/hero/backdrop-${w}.webp`)
-}
-console.log('public/hero/backdrop-{960,1920}.webp')

@@ -106,25 +106,18 @@ Rules:
 
 ### 01 — Hero: "Cake is the language of love"
 
-```
- ┌─[tab: logo]───────────────────────────────── Call · Order ─┐
- │                                                             │
- │  Cake is the language of                (top-light glow)     │
- │                                                             │
- │  ██╗      ██████╗ ██╗   ██╗███████╗     ╭─ rosette cake ─╮   │
- │  ██║     ██╔═══██╗██║   ██║██╔════╝     │  cut-out, in   │   │
- │  love  (mega, icing, behind the cake) ──┤  front of the  │   │
- │                                         │  word, tilts   │   │
- │  Kottawa  Boralesgamuwa  Piliyandala    ╰────────────────╯   │
- │  Kotikawatta                     [Order on PickMe] [Call]    │
- └─────────────────────────────────────────────────────────────┘
-```
+Revised 2026-11-09 after client review: the first version (a floating cut-out, then a 3D
+scene with ribbons and particles) read as decorative rather than premium.
 
-- The real rosette cake (cut-out, 3160 px) floats in front of the giant word **love**, layered for depth: back word, cake, then a few gold and plum "sprinkle" particles in front (colours of the rosettes).
-- **Desktop:** the cake is a WebGL plane in react-three-fiber. It tilts up to 6° toward the pointer (or device tilt), with a gold rim light and a soft contact shadow. Loaded lazily after first paint.
-- **Phones / low power / reduced motion:** the same cut-out as a responsive `<img>` with a CSS scroll transform. No WebGL.
-- **On scroll:** the cake rises and scales down while **love** slides left at a different speed (parallax on decorative layers only), then a swash wipe hands over to chapter 02.
-- *Why:* their own poster line, their own best-selling product type, their colour as the room.
+- **A real photograph of the shop, full bleed.** `scripts/hero-composite.mjs` composes it from
+  Spunchy's own photos (no generated imagery): the lit cake cabinet with the orange Spunchy
+  boxes as the sharp subject, set in the store's own oak-panelled counter, softly out of focus
+  and sunk into maroon. Desktop is landscape (cabinet on the right, room behind the type);
+  phones get a tall portrait version with the cabinet in the top half.
+- **Editorial type on the calm side:** a fine gold rule, the serif lead-in and the punch word,
+  their bio line, and two actions.
+- **Motion is restrained:** one orchestrated entrance (photo settles from a slow zoom, rule
+  draws, letters rise), then on scroll the photograph drifts slower than the page.
 
 ### 02 — "The four posters" (pinned, about 400 vh on desktop)
 
