@@ -1,1 +1,35 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@import './styles/tokens.css';
+
+@layer base {
+  html {
+    background: var(--color-night);
+    color: var(--color-on-night);
+    font-family: var(--font-serif);
+    font-size: 100%;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    min-height: 100dvh;
+    font-size: var(--text-body);
+    line-height: 1.6;
+  }
+  h1, h2, h3, button, .font-display {
+    font-family: var(--font-display);
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+  }
+  :lang(si) {
+    font-family: var(--font-sinhala);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-ink);
+  }
+}

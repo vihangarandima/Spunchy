@@ -1,0 +1,85 @@
+/* Spunchy design tokens: the single source for colour, type, space, shape and motion.
+   Every colour derives from the logo (maroon, swash gold, icing white) or the store's oak.
+   See docs/design-system.md for the reasoning. */
+
+@import '@fontsource-variable/bricolage-grotesque/standard.css';
+@import '@fontsource-variable/newsreader/standard.css';
+@import '@fontsource-variable/newsreader/standard-italic.css';
+@import '@fontsource/abhaya-libre/sinhala-500.css';
+@import '@fontsource/abhaya-libre/sinhala-700.css';
+
+@theme {
+  /* Colour: logo */
+  --color-maroon: #7a1523;
+  --color-gold: #f7b836;
+  --color-icing: #fef6f5;
+
+  /* Colour: derived */
+  --color-night: #3a0a12; /* the stage: maroon in shadow */
+  --color-night-deep: #22060b; /* vignette edges, footer */
+  --color-velvet: #5a101b; /* raised surface on the stage */
+  --color-plum: #6b2a4a; /* rosette piping, links on paper */
+  --color-paper: #f6e7da; /* icing warmed toward the oak wall */
+  --color-ink: #2a0a0f; /* text on paper: maroon, never neutral black */
+  --color-oak: #9a6a44; /* decorative only: rules, the wall texture */
+  --color-ember: #c8401c; /* the cake-box print colour; tiny accents only, never text (4.1:1) */
+
+  /* Text on the stage */
+  --color-on-night: var(--color-icing);
+  --color-on-night-soft: #e9cfcf; /* 11.6:1 on night */
+
+  /* Type */
+  --font-display: 'Bricolage Grotesque Variable', 'Arial Narrow', sans-serif;
+  --font-serif: 'Newsreader Variable', Georgia, serif;
+  --font-sinhala: 'Abhaya Libre', 'Iskoola Pota', 'Noto Sans Sinhala', serif;
+
+  /* Fluid type scale (minor-sixth steps on desktop, tighter on phones) */
+  --text-mega: clamp(5.5rem, 22vw, 19rem); /* the one-word poster punch: Love, Fresh */
+  --text-display: clamp(3rem, 9vw, 8rem);
+  --text-h1: clamp(2.4rem, 5.5vw, 4.75rem);
+  --text-h2: clamp(1.9rem, 3.6vw, 3rem);
+  --text-h3: clamp(1.35rem, 2vw, 1.75rem);
+  --text-lede: clamp(1.25rem, 1.7vw, 1.6rem); /* serif poster lines */
+  --text-body: 1.0625rem;
+  --text-small: 0.9375rem;
+  --text-micro: 0.8125rem;
+
+  /* Space: 4 px base, spacious for a marketing page */
+  --spacing: 0.25rem;
+  --space-gutter: clamp(1rem, 4vw, 3.5rem);
+  --space-section: clamp(6rem, 14vw, 12rem);
+
+  /* Shape: hierarchy from the logo, not one radius for everything */
+  --radius-roundel: 9999px; /* the logo disc: buttons, cursor, avatar */
+  --radius-tab: 0 0 2rem 2rem; /* the hanging logo tab from every Instagram post */
+  --radius-cabinet: 1.75rem; /* product cases and media frames */
+  --radius-chip: 0.75rem;
+
+  /* Light, not shadow: the stage is lit like the cake cabinets */
+  --shadow-lift: 0 2.5rem 5rem -2rem rgb(18 3 6 / 0.75);
+  --shadow-contact: 0 1.5rem 2rem -1.25rem rgb(18 3 6 / 0.9);
+  --shadow-glow: 0 0 0 1px rgb(247 184 54 / 0.35), 0 1.25rem 4rem -1.5rem rgb(247 184 54 / 0.5);
+
+  /* Motion: the swash is a fast flick that settles */
+  --ease-swash: cubic-bezier(0.16, 1, 0.3, 1); /* GSAP: expo.out    reveals, entrances */
+  --ease-stroke: cubic-bezier(0.65, 0, 0.35, 1); /* GSAP: power3.inOut path draws, wipes */
+  --ease-pop: cubic-bezier(0.34, 1.45, 0.64, 1); /* GSAP: back.out(1.5) small UI only */
+  --ease-exit: cubic-bezier(0.5, 0, 0.75, 0); /* GSAP: power2.in   things leaving */
+  --duration-tap: 140ms;
+  --duration-ui: 260ms;
+  --duration-reveal: 750ms;
+  --duration-scene: 1200ms;
+}
+
+:root {
+  color-scheme: dark;
+  /* Cursor, intro and wipes read these at runtime */
+  --grain-opacity: 0.045;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-reveal: 1ms;
+    --duration-scene: 1ms;
+  }
+}

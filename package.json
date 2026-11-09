@@ -10,6 +10,9 @@
     "images": "node scripts/images.mjs crop && python -I scripts/upscale.py && node scripts/images.mjs grade && python -I scripts/cutout.py && node scripts/images.mjs export && node scripts/images.mjs sheet"
   },
   "dependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fontsource-variable/newsreader": "^5.3.0",
+    "@fontsource/abhaya-libre": "^5.3.0",
     "@react-three/drei": "^10.7.9",
     "@react-three/fiber": "^9.8.2",
     "gsap": "^3.15.1",
