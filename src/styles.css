@@ -188,8 +188,4 @@
     opacity: 0;
   }
 
-  .instagram-media {
-    border-radius: var(--radius-cabinet) !important;
-    overflow: hidden;
-  }
 }

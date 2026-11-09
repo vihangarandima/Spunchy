@@ -1,67 +1,76 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
+import { Img } from '../components/Img'
 import { Button } from '../components/Button'
 import { business } from '../content/business'
+import { gsap, ease } from '../lib/motion'
+import { useGsap } from '../hooks/useGsap'
 
-// Real @spunchy.lk posts. Embedded with Instagram's own embed only when the section is
-// near the viewport, so nothing from Instagram loads on first paint.
+// Instagram's embed script proved unreliable (blocked by ad blockers, privacy settings and
+// slow networks) and heavy, so the section links to the real posts instead of embedding
+// them, beside a mosaic of Spunchy's own shop photos.
 const POSTS = [
-  'https://www.instagram.com/p/Denxm_kMypr/', // Viral Choco Brick, Oct 2026
-  'https://www.instagram.com/p/DfWcyapsnL4/', // Nov 2026
-  'https://www.instagram.com/p/DdteJansvMb/', // Sep 2026
+  { url: 'https://www.instagram.com/p/Denxm_kMypr/', label: 'Viral Choco Brick', date: '17 October 2026' },
+  { url: 'https://www.instagram.com/p/DfWcyapsnL4/', label: 'Latest post', date: '4 November 2026' },
+  { url: 'https://www.instagram.com/p/DdteJansvMb/', label: 'From the cabinet', date: '25 September 2026' },
 ]
 
-declare global {
-  interface Window {
-    instgrm?: { Embeds: { process: () => void } }
-  }
-}
+const MOSAIC = [
+  { id: 'cake-cabinet', alt: 'The cake cabinet at a Spunchy outlet', cls: 'row-span-2' },
+  { id: 'buns-triangle', alt: 'Soft, fluffy triangle buns', cls: '' },
+  { id: 'fruit-tart', alt: 'Fruit tart slices', cls: '' },
+  { id: 'poster-love-wall', alt: 'The Love poster on the oak wall', cls: 'row-span-2' },
+  { id: 'tray-blueberry', alt: 'Blueberry gateau slices', cls: '' },
+  { id: 'interior', alt: 'Inside a Spunchy outlet', cls: '' },
+]
 
-/** Chapter 06: social proof straight from their feed. No invented reviews. */
+/** Chapter 06: Spunchy on Instagram. No invented reviews; links to their real posts. */
 export function Instagram() {
   const root = useRef<HTMLElement>(null)
-  const [load, setLoad] = useState(false)
 
-  useEffect(() => {
-    if (!root.current) return
-    const io = new IntersectionObserver(([e]) => e.isIntersecting && setLoad(true), { rootMargin: '600px' })
-    io.observe(root.current)
-    return () => io.disconnect()
-  }, [])
-
-  useEffect(() => {
-    if (!load) return
-    if (window.instgrm) return window.instgrm.Embeds.process()
-    const s = document.createElement('script')
-    s.src = 'https://www.instagram.com/embed.js'
-    s.async = true
-    document.body.appendChild(s)
-  }, [load])
+  useGsap(root, () => {
+    const mm = gsap.matchMedia()
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      gsap.from('.ig-tile', { y: 60, autoAlpha: 0, stagger: 0.08, duration: 1, ease: ease.swash, scrollTrigger: { trigger: '.ig-mosaic', start: 'top 80%' } })
+    })
+  })
 
   return (
-    <section ref={root} id="instagram" aria-labelledby="ig-title" className="bg-night-deep py-(--space-section)">
-      <div className="flex flex-col gap-6 px-(--space-gutter) md:flex-row md:items-end md:justify-between">
-        <h2 id="ig-title" className="text-display font-extrabold text-icing">
-          <span className="block font-serif text-lede font-normal text-on-night-soft italic">Fresh from the feed</span>
-          {business.instagram.handle}
-        </h2>
-        <Button href={business.instagram.url} external variant="outline">Follow on Instagram</Button>
-      </div>
+    <section ref={root} id="instagram" aria-labelledby="ig-title" className="overflow-x-clip bg-night-deep py-(--space-section)">
+      <div className="grid gap-12 px-(--space-gutter) lg:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)] lg:items-center lg:gap-16">
+        <div>
+          <h2 id="ig-title" className="text-[clamp(2.2rem,3.6vw,3.75rem)] font-extrabold whitespace-nowrap text-icing">
+            <span className="block font-serif text-lede font-normal text-on-night-soft italic">Fresh from the feed</span>
+            {business.instagram.handle}
+          </h2>
+          <ul className="mt-10 border-t border-icing/15">
+            {POSTS.map((p) => (
+              <li key={p.url} className="border-b border-icing/15">
+                <a href={p.url} target="_blank" rel="noopener noreferrer" className="group flex items-baseline justify-between gap-6 py-4">
+                  <span className="font-display text-h3 font-bold text-icing transition-colors duration-(--duration-ui) group-hover:text-gold">{p.label}</span>
+                  <span className="shrink-0 font-display text-micro text-on-night-soft">{p.date}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-8">
+            <Button href={business.instagram.url} external>Follow {business.instagram.handle}</Button>
+          </div>
+        </div>
 
-      <ul className="mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto px-(--space-gutter) pb-4">
-        {POSTS.map((url) => (
-          <li key={url} className="w-[min(86vw,400px)] shrink-0 snap-start">
-            {load ? (
-              <blockquote className="instagram-media" data-instgrm-permalink={url} data-instgrm-version="14" style={{ margin: 0, minWidth: 0, width: '100%' }}>
-                <a href={url} target="_blank" rel="noopener noreferrer" className="text-gold underline">View this post on Instagram</a>
-              </blockquote>
-            ) : (
-              <a href={url} target="_blank" rel="noopener noreferrer" className="grid aspect-[4/5] place-items-center rounded-cabinet bg-velvet font-display text-small text-on-night-soft">
-                View this post on Instagram
-              </a>
-            )}
-          </li>
-        ))}
-      </ul>
+        <a
+          href={business.instagram.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Spunchy on Instagram, ${business.instagram.handle}`}
+          className="ig-mosaic grid auto-rows-[9rem] grid-cols-2 gap-3 sm:auto-rows-[11rem] md:grid-cols-3 md:gap-4"
+        >
+          {MOSAIC.map((m) => (
+            <div key={m.id} className={`ig-tile overflow-hidden rounded-cabinet bg-velvet ${m.cls}`}>
+              <Img id={m.id} alt={m.alt} sizes="(min-width: 768px) 20vw, 50vw" className="block h-full w-full" imgClassName="h-full w-full object-cover transition-transform duration-700 hover:scale-105" />
+            </div>
+          ))}
+        </a>
+      </div>
     </section>
   )
 }

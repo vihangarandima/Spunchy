@@ -118,9 +118,11 @@ export function Posters() {
           tl.to(panel, { yPercent: 0, duration: 1, ease: ease.stroke }, at)
           tl.fromTo(panel.querySelector('.act-ribbon'), { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.7 }, at)
         }
-        tl.from(panel.querySelectorAll('.act-line'), { yPercent: 60, autoAlpha: 0, stagger: 0.08, duration: 0.5, ease: ease.swash }, at + (i ? 0.55 : 0))
         const art = panel.querySelector('.act-art')
-        if (panel.dataset.act === 'fresh') tl.from(art, { xPercent: 30, yPercent: 25, rotation: -10, autoAlpha: 0, duration: 0.9, ease: ease.swash }, at)
+        // The first act is already on screen when the pin starts, so it is shown in its
+        // final state (animating it in from nothing left a blank first frame).
+        if (i > 0) tl.from(panel.querySelectorAll('.act-line'), { yPercent: 60, autoAlpha: 0, stagger: 0.08, duration: 0.5, ease: ease.swash }, at + 0.55)
+        if (panel.dataset.act === 'fresh') tl.to(art, { xPercent: -6, yPercent: -4, rotation: 2, duration: 1, ease: 'none' }, at)
         if (panel.dataset.act === 'savory') tl.from(art, { yPercent: -70, autoAlpha: 0, duration: 0.8, ease: ease.swash }, at + 0.5)
         if (panel.dataset.act === 'heaven') tl.fromTo(art, { x: () => window.innerWidth * 0.35 }, { x: () => -(art!.scrollWidth - window.innerWidth * 0.6), duration: 1.6 }, at + 0.4)
         if (panel.dataset.act === 'love') {
@@ -153,7 +155,7 @@ export function Posters() {
             key={a.id}
             data-act={a.id}
             className={`act relative flex min-h-dvh flex-col justify-center gap-10 px-(--space-gutter) py-24 md:motion-safe:absolute md:motion-safe:inset-0 md:motion-safe:min-h-0 md:flex-row md:justify-between md:motion-safe:py-0 ${
-              a.id === 'heaven' ? 'md:items-start md:pt-[13vh]' : 'md:items-center'
+              a.id === 'heaven' ? 'md:items-start md:motion-safe:pt-[18vh]' : 'md:items-center'
             }`}
             style={{ background: a.bg, zIndex: i }}
           >

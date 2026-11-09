@@ -165,9 +165,11 @@ Spunchy's in-store campaign becomes the story. Each poster is one act, and the s
 
 ### 06 — "On Instagram"
 
-- 6–9 real @spunchy.lk posts as tab-masked tiles linking to the posts; loaded lazily from images the client provides or approves (no embed script on first load).
-- Creator reels (@itsmechamith_) only with permission.
-- No invented reviews or quotes.
+- Links to recent @spunchy.lk posts (title and date) and a Follow button, beside a mosaic of
+  Spunchy's own shop and product photos that links to the profile.
+- Revised in Phase 5: Instagram's embed script was dropped. It was blocked by ad blockers and
+  privacy settings, added a heavy third-party script, and pushed the page sideways.
+- Creator reels (@itsmechamith_) only with permission. No invented reviews or quotes.
 
 ### 07 — Footer: the brand signs off
 
