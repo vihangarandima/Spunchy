@@ -2,11 +2,12 @@
    Every colour derives from the logo (maroon, swash gold, icing white) or the store's oak.
    See docs/design-system.md for the reasoning. */
 
-@import '@fontsource-variable/bricolage-grotesque/standard.css';
-@import '@fontsource-variable/newsreader/standard.css';
-@import '@fontsource-variable/newsreader/standard-italic.css';
+@import '@fontsource-variable/bricolage-grotesque/wdth.css';
+@import '@fontsource-variable/newsreader/wght.css';
+@import '@fontsource-variable/newsreader/wght-italic.css';
 @import '@fontsource/abhaya-libre/sinhala-500.css';
 @import '@fontsource/abhaya-libre/sinhala-700.css';
+
 
 @theme {
   /* Colour: logo */
@@ -34,7 +35,7 @@
   --font-sinhala: 'Abhaya Libre', 'Iskoola Pota', 'Noto Sans Sinhala', serif;
 
   /* Fluid type scale (minor-sixth steps on desktop, tighter on phones) */
-  --text-mega: clamp(5.5rem, 22vw, 19rem); /* the one-word poster punch: Love, Fresh */
+  --text-mega: clamp(6rem, 27vw, 19rem); /* the one-word poster punch: Love, Fresh */
   --text-display: clamp(3rem, 9vw, 8rem);
   --text-h1: clamp(2.4rem, 5.5vw, 4.75rem);
   --text-h2: clamp(1.9rem, 3.6vw, 3rem);

@@ -1,10 +1,7 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+// Tiny entry: let the browser paint the prerendered HTML (boot frame + hero) first, then
+// load and hydrate the app. Importing the app eagerly made first paint wait on ~490 kB of JS.
 import './styles.css'
 
-// Placeholder until Phase 4. The site is rebuilt from scratch after the brand brief and storyboard are approved.
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <main className="grid min-h-dvh place-items-center">Spunchy rebuild in progress</main>
-  </StrictMode>,
-)
+const afterFirstPaint = () => new Promise<void>((resolve) => requestAnimationFrame(() => setTimeout(resolve, 0)))
+
+afterFirstPaint().then(() => import('./client'))

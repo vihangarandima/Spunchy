@@ -6,7 +6,7 @@
 // Rejected: a savoury-rolls cut-out from the 375 px Savory poster photo (too soft to cut
 // cleanly). Needs a product shot.
 
-export const SIZES = [640, 1280, 1920, 2560]
+export const SIZES = [640, 960, 1280, 1920, 2560]
 
 export const images = [
   // Celebration cake with pink/ivory/plum rosettes: the hero product
@@ -46,6 +46,8 @@ export const images = [
   { id: 'tray-mousse', src: 'tray-mousse.jpg', up: 4, grade: 'photo' },
   { id: 'tray-nuga', src: 'tray-nuga.jpg', up: 4, grade: 'photo' },
   { id: 'bread', src: 'bread.jpg', up: 4, grade: 'photo' },
+  // Logo stand-in: the 150 px Instagram avatar, upscaled. Replace with the SVG once supplied.
+  { id: 'logo-roundel', src: '../reference/ig-avatar.jpg', up: 4, grade: 'none' },
   // Oak plank wall, used as a texture
   { id: 'oak-wall', src: 'visit-poster-love-wall.jpg', crop: [715, 140, 245, 960], up: 4, grade: 'photo' },
 ]

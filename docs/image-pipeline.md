@@ -10,7 +10,7 @@
 | `python scripts/upscale.py [ids]` | Real-ESRGAN x2plus / x4plus (ONNX, CPU) | `up/<id>.png` (skips files already done) |
 | `node scripts/images.mjs grade` | sharp | `graded/<id>.png`: the shared colour grade |
 | `python scripts/cutout.py [ids]` | rembg + BiRefNet-general | `cut/<id>.png`: transparent product cut-outs |
-| `node scripts/images.mjs export` | sharp | AVIF + WebP at 640 / 1280 / 1920 / 2560, `manifest.json` with sizes and a 24 px blurred placeholder |
+| `node scripts/images.mjs export` | sharp | AVIF + WebP at 640 / 960 / 1280 / 1920 / 2560, `manifest.json` with sizes and a 24 px blurred placeholder |
 | `node scripts/images.mjs sheet` | — | `docs/contact-sheet/index.html` (before/after review page) |
 
 What gets processed, and how, is listed in `scripts/images.config.mjs`.

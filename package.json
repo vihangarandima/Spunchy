@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port 5175",
-    "build": "tsc -b && vite build",
+    "build": "tsc -p . && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
     "preview": "vite preview --port 4174",
-    "images": "node scripts/images.mjs crop && python -I scripts/upscale.py && node scripts/images.mjs grade && python -I scripts/cutout.py && node scripts/images.mjs export && node scripts/images.mjs sheet"
+    "images": "node scripts/images.mjs crop && python -I scripts/upscale.py && node scripts/images.mjs grade && python -I scripts/cutout.py && node scripts/images.mjs export && node scripts/images.mjs sheet",
+    "brand": "node scripts/brand-assets.mjs"
   },
   "dependencies": {
     "@fontsource-variable/bricolage-grotesque": "^5.3.0",

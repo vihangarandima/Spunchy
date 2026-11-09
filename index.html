@@ -2,11 +2,67 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Spunchy — Pastry & Bakery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <script>document.documentElement.classList.add('js')</script>
+    <title>Spunchy | Premium Pastry & Bakery in Kottawa, Boralesgamuwa, Piliyandala & Kotikawatta</title>
+    <meta name="description" content="Spunchy, a premium pastry & bakery brand in Sri Lanka. Freshly baked cakes, savories & more at Kottawa, Boralesgamuwa, Piliyandala and Kotikawatta. Call 077 376 8615." />
+    <meta name="theme-color" content="#3a0a12" />
+    <link rel="preload" as="image" href="/logo-roundel.webp" fetchpriority="high" />
+    <!-- Hero cake (the LCP image); srcset/sizes match src/sections/Hero.tsx -->
+    <link rel="preload" as="image" type="image/avif" fetchpriority="high" imagesizes="(min-width: 768px) 50vw, 92vw"
+      imagesrcset="/hero/cake-480.avif 480w, /hero/cake-800.avif 800w, /hero/cake-1280.avif 1280w, /hero/cake-1920.avif 1920w" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <style>
+      /* Boot frame: the intro's first frame, painted from HTML before any JavaScript.
+         src/sections/Intro.tsx renders the same geometry and removes this on mount. */
+      html { background: #22060b; }
+      #boot { position: fixed; inset: 0; z-index: 91; display: grid; place-items: center; background: #22060b; }
+      #boot .mark { position: relative; width: min(78vw, 720px); aspect-ratio: 1000 / 300; }
+      #boot img { position: absolute; top: 18%; left: 50%; width: 30%; height: auto; transform: translateX(-50%); border-radius: 9999px;
+        box-shadow: 0 0 0 1px rgb(247 184 54 / 0.35), 0 1.25rem 4rem -1.5rem rgb(247 184 54 / 0.5); }
+    </style>
+    <noscript><style>#boot { display: none; }</style></noscript>
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Spunchy" />
+    <meta property="og:title" content="Spunchy | Premium Pastry & Bakery" />
+    <meta property="og:description" content="Freshly baked cakes, savories & more. Kottawa, Boralesgamuwa, Piliyandala, Kotikawatta." />
+    <meta property="og:image" content="/og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_LK" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Bakery",
+        "name": "Spunchy",
+        "description": "Premium Pastry & Bakery Brand. Freshly baked cakes, savories & more.",
+        "telephone": "+94773768615",
+        "image": "/og.jpg",
+        "sameAs": ["https://www.instagram.com/spunchy.lk/"],
+        "servesCuisine": ["Bakery", "Cakes", "Pastries"],
+        "areaServed": ["Kottawa", "Boralesgamuwa", "Piliyandala", "Kotikawatta"],
+        "address": { "@type": "PostalAddress", "addressLocality": "Kottawa", "addressCountry": "LK" },
+        "department": [
+          { "@type": "Bakery", "name": "Spunchy Kottawa", "address": { "@type": "PostalAddress", "addressLocality": "Kottawa", "addressCountry": "LK" } },
+          { "@type": "Bakery", "name": "Spunchy Boralesgamuwa", "address": { "@type": "PostalAddress", "addressLocality": "Boralesgamuwa", "addressCountry": "LK" } },
+          { "@type": "Bakery", "name": "Spunchy Piliyandala", "address": { "@type": "PostalAddress", "addressLocality": "Piliyandala", "addressCountry": "LK" } },
+          { "@type": "Bakery", "name": "Spunchy Kotikawatta", "address": { "@type": "PostalAddress", "addressLocality": "Kotikawatta", "addressCountry": "LK" } }
+        ]
+      }
+    </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="boot" aria-hidden="true"><div class="mark"><img src="/logo-roundel.webp" width="256" height="256" alt="" fetchpriority="high" /></div></div>
+    <div id="root"><!--app--></div>
+    <noscript>
+      <p style="padding:2rem;font-family:Georgia,serif;color:#fef6f5;background:#3a0a12">
+        Spunchy: Premium Pastry &amp; Bakery. Kottawa, Boralesgamuwa, Piliyandala, Kotikawatta. Call 077 376 8615.
+      </p>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
