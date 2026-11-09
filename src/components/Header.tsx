@@ -13,6 +13,16 @@ const links = [
 export function Header() {
   const ref = useRef<HTMLElement>(null)
   const [open, setOpen] = useState(false)
+  // Over the cream hero the header switches to maroon ink (the open menu is always dark).
+  const [onLight, setOnLight] = useState(true)
+  useEffect(() => {
+    const hero = document.getElementById('top')
+    if (!hero) return
+    const io = new IntersectionObserver(([e]) => setOnLight(e.isIntersecting), { rootMargin: '0px 0px -92% 0px' })
+    io.observe(hero)
+    return () => io.disconnect()
+  }, [])
+  const light = onLight && !open
 
   useEffect(() => {
     let lastY = window.scrollY
@@ -56,7 +66,7 @@ export function Header() {
         <ul className="hidden items-center gap-1 md:flex">
           {links.map((l) => (
             <li key={l.href}>
-              <a href={l.href} onClick={go(l.href)} className="nav-link rounded-roundel px-4 py-3 font-display text-small font-semibold text-icing">
+              <a href={l.href} onClick={go(l.href)} className={`nav-link rounded-roundel px-4 py-3 font-display text-small font-semibold transition-colors duration-(--duration-ui) ${light ? 'text-maroon' : 'text-icing'}`}>
                 {l.label}
               </a>
             </li>
@@ -64,13 +74,13 @@ export function Header() {
         </ul>
         <a
           href={`tel:${business.phone.tel}`}
-          className="inline-flex min-h-12 items-center rounded-roundel bg-gold px-5 font-display text-small font-bold text-ink"
+          className={`inline-flex min-h-12 items-center rounded-roundel px-5 font-display text-small font-bold transition-colors duration-(--duration-ui) ${light ? 'bg-maroon text-icing' : 'bg-gold text-ink'}`}
         >
           Call
         </a>
         <button
           type="button"
-          className="inline-flex min-h-12 items-center rounded-roundel border border-icing/40 px-5 font-display text-small font-bold text-icing md:hidden"
+          className={`inline-flex min-h-12 items-center rounded-roundel border px-5 font-display text-small font-bold transition-colors duration-(--duration-ui) md:hidden ${light ? 'border-maroon/40 text-maroon' : 'border-icing/40 text-icing'}`}
           aria-expanded={open}
           aria-controls="mobile-menu"
           onClick={() => setOpen((o) => !o)}

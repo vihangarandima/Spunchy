@@ -104,20 +104,28 @@ Rules:
 
 *Why:* the swash is the most ownable part of the logo. The first second of the site is that swash. A `localStorage` flag shortens repeat visits. Skippable with any key or click.
 
-### 01 — Hero: "Cake is the language of love"
+### 01 — Hero: three Spunchy favourites on a cream stage
 
-Revised 2026-11-09 after client review: the first version (a floating cut-out, then a 3D
-scene with ribbons and particles) read as decorative rather than premium.
+Revised again 2026-11-09 at the client's request, following a reference layout they chose
+(a café landing page with a stacked serif headline, a floating product shedding particles,
+and a numbered side panel). Rebuilt for Spunchy rather than copied:
 
-- **A real photograph of the shop, full bleed.** `scripts/hero-composite.mjs` composes it from
-  Spunchy's own photos (no generated imagery): the lit cake cabinet with the orange Spunchy
-  boxes as the sharp subject, set in the store's own oak-panelled counter, softly out of focus
-  and sunk into maroon. Desktop is landscape (cabinet on the right, room behind the type);
-  phones get a tall portrait version with the cabinet in the top half.
-- **Editorial type on the calm side:** a fine gold rule, the serif lead-in and the punch word,
-  their bio line, and two actions.
-- **Motion is restrained:** one orchestrated entrance (photo settles from a slow zoom, rule
-  draws, letters rise), then on scroll the photograph drifts slower than the page.
+- **Cream stage, maroon ink.** Icing-white light behind the product, paper at the edges; the
+  logo maroon replaces the reference's espresso brown. The header switches to maroon ink
+  while it is over this hero.
+- **Three slides, each a line from Spunchy's posters:** "Cake is the language of love"
+  (rosette cake), "Soft, fluffy & fresh" (triangle buns), "A slice of heaven" (fruit tart).
+  The stacked uppercase serif is sized from each slide's longest line so it never wraps.
+- **The product floats** (slow bob) over a soft shadow, and **crumbs fall from it** in its own
+  colours (a canvas, a few dozen at a time, off with reduced motion, paused offscreen).
+- **The numbered panel:** 01/02/03, category, product name, a factual line (label price where
+  known) and a maroon "Call to order" pill.
+- **Bottom row:** "Explore the cabinet" and a round control with a gold progress ring.
+  Autoplay every 6.5 s, paused on hover, focus or offscreen; 01/02/03 buttons jump directly.
+- **Transitions:** the line exits up through its masks, the product lifts away, the next rises
+  in. The product is centred with flexbox so GSAP owns its transform.
+
+The earlier store-photograph hero can be regenerated with `node scripts/hero-composite.mjs`.
 
 ### 02 — "The four posters" (pinned, about 400 vh on desktop)
 

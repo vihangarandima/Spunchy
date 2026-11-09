@@ -52,6 +52,34 @@
      it at load; its entrance (src/sections/Hero.tsx) starts from offsets in the same frame
      the intro hands over, so nothing flashes. */
 
+  /* The cream hero stage: warm icing light behind the product, edges toward paper */
+  .hero-cream {
+    background:
+      radial-gradient(42% 52% at 50% 46%, #fffaf5 0%, rgb(255 250 245 / 0) 70%),
+      radial-gradient(120% 90% at 50% 40%, var(--color-icing) 30%, var(--color-paper) 100%);
+  }
+  /* Hero headline: uppercase serif caps run about 0.68em per character, so the size is
+     the column width divided by the longest line, capped for short lines. */
+  .hero-lines {
+    font-size: min(5.25rem, calc((100vw - 2 * var(--space-gutter)) / (var(--chars) * 0.68)));
+  }
+  @media (min-width: 1024px) {
+    .hero-lines {
+      font-size: min(8.25rem, calc(33vw / (var(--chars) * 0.68)));
+    }
+  }
+  /* The product breathes: a slow bob, so it reads as floating */
+  .hero-float {
+    animation: hero-float 5.5s ease-in-out infinite alternate;
+  }
+  @keyframes hero-float {
+    from { transform: translateY(-6px) rotate(-0.6deg); }
+    to { transform: translateY(8px) rotate(0.6deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-float { animation: none; }
+  }
+
   .toplight {
     background: radial-gradient(55% 60% at 70% 0%, rgb(247 184 54 / 0.18), transparent 70%), var(--color-night);
   }

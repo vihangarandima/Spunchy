@@ -4,7 +4,7 @@ import { gsap, ease, isRichDevice } from '../lib/motion'
 type Props = {
   href: string
   children: ReactNode
-  variant?: 'gold' | 'outline' | 'icing'
+  variant?: 'gold' | 'outline' | 'icing' | 'maroon'
   external?: boolean
   className?: string
   onClick?: (e: MouseEvent<HTMLAnchorElement>) => void
@@ -14,6 +14,7 @@ const variants = {
   gold: 'bg-gold text-ink',
   outline: 'border border-gold text-gold hover:text-ink focus-visible:text-ink',
   icing: 'bg-icing text-ink',
+  maroon: 'bg-maroon text-icing',
 }
 
 /** Roundel pill. The fill sweeps in at the script's 12° slant; desktop adds a magnetic pull. */

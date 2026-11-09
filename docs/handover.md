@@ -21,7 +21,7 @@ Asset scripts (only needed when photos change):
 | Command | What it does |
 |---|---|
 | `npm run images` | Crops, upscales (Real-ESRGAN), grades and exports all photos; makes product cut-outs (rembg). Needs Python + `rembg` and the models listed in image-pipeline.md |
-| `npm run brand` | Favicon, touch icon, Open Graph image, boot-frame logo, and the hero photograph (`scripts/hero-composite.mjs`) |
+| `npm run brand` | Favicon, touch icon, Open Graph image and the boot-frame logo. (`node scripts/hero-composite.mjs` rebuilds the earlier store-photo hero image, now unused.) |
 | `node scripts/review.mjs` | Screenshots at 375 / 768 / 1280 / 1920 and a scroll recording, into `review/` (needs `npm run preview` running) |
 
 ## What's on the page
@@ -29,8 +29,9 @@ Asset scripts (only needed when photos change):
 1. **Intro.** The logo paints from the HTML instantly, the gold swash draws beneath it, then the
    page lifts away. About 2 s on a first visit on desktop and 1.1 s on phones; under 1 s on
    repeat visits; skipped with reduced motion. Any key or click skips it.
-2. **Hero.** A full-bleed photograph of the Spunchy cake cabinet in the store (composed from
-   Spunchy's own photos), with "Cake is the language of *love*".
+2. **Hero.** Three Spunchy favourites on a cream stage (rosette cake, triangle buns, fruit tart),
+   each with a line from Spunchy's posters in a stacked serif, crumbs falling from the floating
+   product, a numbered side panel and a progress-ring control. Autoplays; pauses on hover/focus.
 3. **The four posters.** Spunchy's in-store campaign (Fresh, Savory, Heaven, Love) as a pinned,
    scroll-driven chapter with swash-shaped colour wipes. Stacked panels on phones.
 4. **The cabinet.** Draggable product rail with label prices; each product opens a detail view
@@ -44,8 +45,8 @@ Asset scripts (only needed when photos change):
 
 | Check | Result |
 |---|---|
-| Lighthouse desktop | Performance 98, Accessibility 100, Best Practices 100, SEO 100 |
-| Lighthouse mobile (simulated slow 4G) | Performance 86 (three runs), Accessibility 100, Best Practices 100, SEO 100 |
+| Lighthouse desktop | Performance 97, Accessibility 100, Best Practices 100, SEO 100 |
+| Lighthouse mobile (simulated slow 4G) | Performance 85, Accessibility 100, Best Practices 100, SEO 100 |
 | Real first paint / largest paint (unthrottled) | about 0.3 s |
 | Layout shift | 0 |
 | Widths checked | 375, 768, 1280, 1920: no errors, no horizontal overflow |
