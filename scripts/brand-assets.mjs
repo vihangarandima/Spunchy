@@ -47,3 +47,20 @@ for (const w of [480, 800, 1280, 1920]) {
   await base.clone().webp({ quality: 82, alphaQuality: 90 }).toFile(`public/hero/cake-${w}.webp`)
 }
 console.log('public/hero/cake-{480,800,1280,1920}.{avif,webp}')
+
+// Hero backdrop: the real cake cabinet, heavily blurred into bokeh, overlaid with maroon
+// and sunk into the night, so the hero has depth from the first paint (before WebGL loads).
+for (const w of [960, 1920]) {
+  const h = Math.round(w * 0.62)
+  const rect = (fill, opacity) => Buffer.from(`<svg width="${w}" height="${h}"><rect width="100%" height="100%" fill="${fill}" fill-opacity="${opacity}"/></svg>`)
+  const blurred = await sharp(`${CACHE}/graded/cake-cabinet.png`)
+    .resize({ width: w, height: h, fit: 'cover' })
+    .blur(w / 52)
+    .modulate({ brightness: 1.05, saturation: 1.2 })
+    .toBuffer()
+  await sharp(blurred)
+    .composite([{ input: rect('#7a1523', 1), blend: 'overlay' }, { input: rect('#3a0a12', 0.62) }])
+    .webp({ quality: 72 })
+    .toFile(`public/hero/backdrop-${w}.webp`)
+}
+console.log('public/hero/backdrop-{960,1920}.webp')
