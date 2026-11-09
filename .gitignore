@@ -4,5 +4,4 @@ dist
 .env.*
 !.env.example
 *.log
-reports/*.json
-dist-ssr
+.tools
