@@ -48,10 +48,9 @@
     letter-spacing: -0.035em;
   }
 
-  /* Hidden until their entrance plays; only when JS runs (class set in index.html) */
-  .js .hero-reveal {
-    visibility: hidden;
-  }
+  /* The hero copy is painted from the first frame, behind the intro, so the browser records
+     it at load; its entrance (src/sections/Hero.tsx) starts from offsets in the same frame
+     the intro hands over, so nothing flashes. */
 
   .toplight {
     background: radial-gradient(55% 60% at 70% 0%, rgb(247 184 54 / 0.18), transparent 70%), var(--color-night);

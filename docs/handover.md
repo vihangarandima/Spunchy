@@ -27,8 +27,8 @@ Asset scripts (only needed when photos change):
 ## What's on the page
 
 1. **Intro.** The logo paints from the HTML instantly, the gold swash draws beneath it, then the
-   page lifts away. About 2 s on a first visit, under 1 s on repeat visits, skipped with reduced
-   motion. Any key or click skips it.
+   page lifts away. About 2 s on a first visit on desktop and 1.1 s on phones; under 1 s on
+   repeat visits; skipped with reduced motion. Any key or click skips it.
 2. **Hero.** A full-bleed photograph of the Spunchy cake cabinet in the store (composed from
    Spunchy's own photos), with "Cake is the language of *love*".
 3. **The four posters.** Spunchy's in-store campaign (Fresh, Savory, Heaven, Love) as a pinned,
@@ -44,18 +44,18 @@ Asset scripts (only needed when photos change):
 
 | Check | Result |
 |---|---|
-| Lighthouse desktop | Performance 96–97, Accessibility 100, Best Practices 100, SEO 100 |
-| Lighthouse mobile (simulated slow 4G) | Performance 82–84, Accessibility 100, Best Practices 100, SEO 100 |
-| Real first paint / largest paint (unthrottled) | about 0.4 s |
+| Lighthouse desktop | Performance 98, Accessibility 100, Best Practices 100, SEO 100 |
+| Lighthouse mobile (simulated slow 4G) | Performance 86 (three runs), Accessibility 100, Best Practices 100, SEO 100 |
+| Real first paint / largest paint (unthrottled) | about 0.3 s |
 | Layout shift | 0 |
 | Widths checked | 375, 768, 1280, 1920: no errors, no horizontal overflow |
 | SEO | Prerendered HTML, meta + Open Graph, `Bakery` structured data for the four outlets, robots.txt |
 | Accessibility | Skip link, keyboard-operable cabinet and menus, visible focus, alt text, WCAG AA contrast |
 | Reduced motion | No intro, no pinned scenes, no parallax; chapters stack in their final state. Verified in code only (the test browser can't emulate the OS setting) |
 
-Mobile Performance is 1–3 points under the target of 85. The page actually paints in about
-0.4 s; the gap is Lighthouse's slow-4G simulation counting the intro and three web fonts.
-Shortening the intro on phones is the most effective lever if 85+ is required.
+Mobile reached the 85 target after three changes: a shorter intro on phones, painting the hero
+copy behind the intro from the first frame (its entrance is built paused and played on hand-over,
+so nothing flashes), and preloading the display font from the HTML.
 
 ## Placeholders and things only Spunchy can supply
 

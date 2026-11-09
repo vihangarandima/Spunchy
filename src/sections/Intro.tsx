@@ -16,7 +16,8 @@ const readSeen = () => {
 /**
  * Opening: the logo is up from the first paint (index.html boot frame), the gold swash
  * draws itself beneath it, then the night field lifts away with the swash as its edge to
- * reveal the hero. About 2 s; repeat visits about 0.8 s; none with reduced motion.
+ * reveal the hero. About 2 s (1.1 s on phones); repeat visits about 0.8 s (0.6 s on
+ * phones); none with reduced motion.
  * Any key or click skips it.
  */
 export function Intro({ onDone }: { onDone: () => void }) {
@@ -35,7 +36,10 @@ export function Intro({ onDone }: { onDone: () => void }) {
       return
     }
     const repeat = readSeen()
-    const k = repeat ? 0.4 : 1
+    // Phones get a quicker version of the same sequence (~1.1 s, ~0.6 s on repeat visits):
+    // people arrive from Instagram in a hurry, and it keeps mobile load metrics healthy.
+    const phone = window.matchMedia('(max-width: 767.98px)').matches
+    const k = phone ? (repeat ? 0.3 : 0.5) : repeat ? 0.4 : 1
     document.documentElement.style.overflow = 'hidden'
 
     const ctx = gsap.context(() => {

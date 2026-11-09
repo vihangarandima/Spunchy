@@ -1,7 +1,7 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { Button } from '../components/Button'
 import { business } from '../content/business'
-import { gsap, ease, mq, SplitText, scrollToTarget } from '../lib/motion'
+import { gsap, ease, SplitText, scrollToTarget } from '../lib/motion'
 import { useGsap } from '../hooks/useGsap'
 
 // The hero photograph (scripts/hero-composite.mjs): Spunchy's own cake cabinet in its
@@ -14,30 +14,31 @@ const PHONE = '(max-width: 767.98px)'
 export function Hero({ ready }: { ready: boolean }) {
   const root = useRef<HTMLElement>(null)
 
-  // Entrance, after the intro hands over: one orchestrated reveal, nothing scattered.
-  useGsap(
-    root,
-    () => {
-      if (!ready) return
-      const mm = gsap.matchMedia()
-      mm.add(mq.reduced, () => {
-        gsap.set('.hero-reveal', { autoAlpha: 1 })
-      })
-      mm.add('(prefers-reduced-motion: no-preference)', () => {
-        // aria: 'none' because the h1 carries the sentence in an sr-only span.
-        const split = SplitText.create('.hero-punch', { type: 'chars', mask: 'chars', aria: 'none' })
-        const tl = gsap.timeline({ defaults: { ease: ease.swash } })
-        tl.set('.hero-reveal', { autoAlpha: 1 })
-          .from('.hero-photo', { scale: 1.12, duration: 2.4, ease: 'power2.out' }, 0)
-          .from('.hero-rule', { scaleX: 0, duration: 1, transformOrigin: 'left center' }, 0.2)
-          .from('.hero-lede', { y: 18, autoAlpha: 0, duration: 0.9 }, 0.3)
-          .from(split.chars, { yPercent: 105, duration: 1.1, stagger: 0.06 }, 0.35)
-          .from('.hero-foot > *', { y: 20, autoAlpha: 0, duration: 0.8, stagger: 0.08 }, 0.8)
-        return () => split.revert()
-      })
-    },
-    [ready],
-  )
+  // Entrance: one orchestrated reveal, nothing scattered. Built paused at hydration, in its
+  // starting state (the copy was already painted once, behind the intro, for LCP), then
+  // played the moment the intro hands over, so the headline never flashes in between.
+  const entrance = useRef<gsap.core.Timeline | null>(null)
+  useGsap(root, () => {
+    const mm = gsap.matchMedia()
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      // aria: 'none' because the h1 carries the sentence in an sr-only span.
+      const split = SplitText.create('.hero-punch', { type: 'chars', mask: 'chars', aria: 'none' })
+      entrance.current = gsap
+        .timeline({ paused: true, defaults: { ease: ease.swash } })
+        .from('.hero-photo', { scale: 1.12, duration: 2.4, ease: 'power2.out' }, 0)
+        .from('.hero-rule', { scaleX: 0, duration: 1, transformOrigin: 'left center' }, 0.2)
+        .from('.hero-lede', { y: 18, autoAlpha: 0, duration: 0.9 }, 0.3)
+        .from(split.chars, { yPercent: 105, duration: 1.1, stagger: 0.06 }, 0.35)
+        .from('.hero-foot > *', { y: 20, autoAlpha: 0, duration: 0.8, stagger: 0.08 }, 0.8)
+      return () => {
+        entrance.current = null
+        split.revert()
+      }
+    })
+  })
+  useEffect(() => {
+    if (ready) entrance.current?.play()
+  }, [ready])
 
   // Scroll: the photograph drifts slower than the page; the type lifts away.
   useGsap(root, () => {
@@ -73,13 +74,13 @@ export function Hero({ ready }: { ready: boolean }) {
       </div>
 
       <div className="hero-copy relative max-w-[40rem]">
-        <span className="hero-rule hero-reveal mb-6 block h-px w-24 bg-gold" aria-hidden="true" />
-        <h1 className="hero-reveal">
+        <span className="hero-rule mb-6 block h-px w-24 bg-gold" aria-hidden="true" />
+        <h1>
           <span className="sr-only">Cake is the language of love</span>
           <span aria-hidden="true" className="hero-lede block font-serif text-lede font-normal text-on-night-soft italic">Cake is the language of</span>
           <span aria-hidden="true" className="hero-punch punch block text-mega text-icing">love</span>
         </h1>
-        <div className="hero-foot hero-reveal mt-8 md:mt-10">
+        <div className="hero-foot mt-8 md:mt-10">
           <p className="max-w-[36ch] text-on-night-soft">
             {business.summary}. {business.outlets.map((o) => o.name).join(', ')}.
           </p>
