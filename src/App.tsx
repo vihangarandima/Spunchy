@@ -1,42 +1,71 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { Routes, Route, useLocation } from 'react-router'
 import { Header } from './components/Header'
-import { Cursor } from './components/Cursor'
-import { Intro } from './sections/Intro'
-import { Hero } from './sections/Hero'
-import { Posters } from './sections/Posters'
-import { Cabinet } from './sections/Cabinet'
-import { WalkIn } from './sections/WalkIn'
-import { FindUs } from './sections/FindUs'
-import { Instagram } from './sections/Instagram'
+import { CartDrawer } from './components/CartDrawer'
+import { SearchDialog } from './components/SearchDialog'
+import { Toast, FloatingCart } from './components/Toast'
 import { Footer } from './sections/Footer'
-import { startSmoothScroll, ScrollTrigger } from './lib/motion'
+import { Home } from './pages/Home'
+import { Menu } from './pages/Menu'
+import { ProductPage } from './pages/Product'
+import { Checkout } from './pages/Checkout'
+import { OrderDone, Outlets, About } from './pages/Other'
+import { NotFound } from './pages/NotFound'
+import { useCart } from './store/cart'
+import { routeMeta } from './routes'
+import { startSmoothScroll, scrollTop, ScrollTrigger } from './lib/motion'
 
 export function App() {
-  const [ready, setReady] = useState(false)
+  const { pathname } = useLocation()
 
   useEffect(() => {
     startSmoothScroll()
-    // Pinned scenes measure layout; re-measure once fonts and images settle.
+    useCart.persist.rehydrate()
     document.fonts?.ready.then(() => ScrollTrigger.refresh())
-    window.addEventListener('load', () => ScrollTrigger.refresh(), { once: true })
   }, [])
+
+  // New page: top of the page, its own title, re-measure scroll scenes.
+  useEffect(() => {
+    if (pathname !== '/') document.getElementById('boot')?.remove()
+    scrollTop()
+    document.title = routeMeta(pathname).title
+    const t = setTimeout(() => ScrollTrigger.refresh(), 100)
+    return () => clearTimeout(t)
+  }, [pathname])
 
   return (
     <>
-      <a href="#main" className="skip-link">Skip to content</a>
-      <Intro onDone={() => setReady(true)} />
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
       <Header />
       <main id="main">
-        <Hero ready={ready} />
-        <Posters />
-        <Cabinet />
-        <WalkIn />
-        <FindUs />
-        <Instagram />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/menu" element={<Menu />} />
+          <Route path="/menu/:category" element={<Menu />} />
+          <Route path="/product/:slug" element={<ProductPage />} />
+          <Route path="/cart" element={<CartRedirect />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/order/:id" element={<OrderDone />} />
+          <Route path="/outlets" element={<Outlets />} />
+          <Route path="/about" element={<About />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </main>
       <Footer />
-      <Cursor />
+      <CartDrawer />
+      <SearchDialog />
+      <Toast />
+      <FloatingCart />
       <div className="grain-overlay" aria-hidden="true" />
     </>
   )
+}
+
+/** /cart opens the drawer over the menu. */
+function CartRedirect() {
+  const openDrawer = useCart((s) => s.openDrawer)
+  useEffect(() => openDrawer(true), [openDrawer])
+  return <Menu />
 }

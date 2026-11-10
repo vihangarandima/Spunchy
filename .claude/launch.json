@@ -1,6 +1,7 @@
 {
   "version": "0.0.1",
   "configurations": [
-    { "name": "spunchy-dev", "runtimeExecutable": "npm", "runtimeArgs": ["run", "dev"], "port": 5175 }
+    { "name": "spunchy-dev", "runtimeExecutable": "npm", "runtimeArgs": ["run", "dev"], "port": 5175 },
+    { "name": "spunchy-prod", "runtimeExecutable": "npx", "runtimeArgs": ["vite", "preview", "--port", "4175", "--strictPort"], "port": 4175 }
   ]
 }

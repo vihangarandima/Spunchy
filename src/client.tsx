@@ -1,19 +1,24 @@
 import { StrictMode } from 'react'
 import { createRoot, hydrateRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router'
 import { App } from './App'
 
-// The story starts at the top; pinned scenes can't be restored mid-way reliably.
-if ('scrollRestoration' in history && !location.hash) {
-  history.scrollRestoration = 'manual'
-  window.scrollTo(0, 0)
-}
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual'
 
 const root = document.getElementById('root')!
 const app = (
   <StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </StrictMode>
 )
-// Production HTML is prerendered (scripts/prerender.mjs); the dev server is not.
-if (root.firstElementChild) hydrateRoot(root, app)
-else createRoot(root).render(app)
+// Production HTML is prerendered per route (scripts/prerender.mjs). Hydrate only when the
+// HTML was rendered for this exact path; anything else (e.g. /order/:id served by the SPA
+// fallback) renders fresh.
+const norm = (p: string) => p.replace(/\/+$/, '') || '/'
+if (root.firstElementChild && norm(root.dataset.route ?? '') === norm(location.pathname)) hydrateRoot(root, app)
+else {
+  root.replaceChildren()
+  createRoot(root).render(app)
+}

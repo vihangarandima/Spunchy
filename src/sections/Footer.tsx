@@ -1,62 +1,88 @@
+// Footer: categories, quick links, outlets, contact and socials, then the big wordmark.
 import { useRef } from 'react'
+import { Link } from 'react-router'
 import { Swash } from '../components/Swash'
 import { Logo } from '../components/Logo'
-import { business } from '../content/business'
-import { gsap, ease, scrollToTarget } from '../lib/motion'
+import { business, mapsSearch } from '../content/business'
+import { liveCategories } from '../content/products'
+import { gsap, ease } from '../lib/motion'
 import { useGsap } from '../hooks/useGsap'
 
-/** Chapter 07: the swash draws across the page and the logo settles at its end, like the intro. */
 export function Footer() {
   const root = useRef<HTMLElement>(null)
 
   useGsap(root, () => {
     const mm = gsap.matchMedia()
     mm.add('(prefers-reduced-motion: no-preference)', () => {
-      const tl = gsap.timeline({ scrollTrigger: { trigger: root.current, start: 'top 80%', end: 'bottom bottom', scrub: 1 } })
-      tl.from('.footer-swash .swash-stroke', { drawSVG: '0%', ease: ease.stroke })
-        .from('.footer-logo', { scale: 0.6, autoAlpha: 0, rotation: -20, ease: ease.swash }, '-=0.25')
+      gsap.from('.footer-swash .swash-stroke', { drawSVG: '0%', duration: 1.6, ease: ease.stroke, scrollTrigger: { trigger: root.current, start: 'top 85%' } })
     })
   })
 
-  const year = new Date().getFullYear()
+  const socials = [
+    { label: 'Instagram', href: business.socials.instagram },
+    { label: 'Facebook', href: business.socials.facebook },
+    { label: 'TikTok', href: business.socials.tiktok },
+  ].filter((s): s is { label: string; href: string } => !!s.href)
 
   return (
-    <footer ref={root} className="relative overflow-hidden bg-night-deep px-(--space-gutter) pt-24 pb-10">
-      <div className="relative">
-        <Swash className="footer-swash w-full" />
-        <div className="footer-logo absolute top-[-6%] right-[2%] w-[18%] max-w-[180px]">
-          <Logo className="w-full shadow-glow" />
-        </div>
-      </div>
-
-      <div className="mt-16 grid gap-10 md:grid-cols-3">
+    <footer ref={root} className="relative overflow-hidden bg-night-deep px-(--space-gutter) pt-20 pb-28 text-icing md:pb-10">
+      <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1.2fr]">
         <div>
-          <p className="punch text-h1 text-icing">{business.tagline}</p>
-          <p className="mt-3 text-on-night-soft">{business.summary}.</p>
+          <Logo className="h-16 w-16 shadow-glow" />
+          <p className="punch mt-5 text-h2 uppercase">{business.tagline}</p>
+          <p className="mt-2 text-on-night-soft">{business.summary}.</p>
         </div>
-        <div className="font-display text-small">
-          <h2 className="mb-3 text-small font-bold text-gold">Outlets</h2>
-          <ul className="space-y-1 text-icing">
-            {business.outlets.map((o) => (
-              <li key={o.id}>{o.name}</li>
-            ))}
-          </ul>
-        </div>
-        <div className="font-display text-small">
-          <h2 className="mb-3 text-small font-bold text-gold">Say hello</h2>
-          <ul className="space-y-1">
-            <li><a className="footer-link inline-flex min-h-11 items-center text-icing" href={`tel:${business.phone.tel}`}>{business.phone.display}</a></li>
-            <li><a className="footer-link inline-flex min-h-11 items-center text-icing" href={business.instagram.url} target="_blank" rel="noopener noreferrer">Instagram {business.instagram.handle}</a></li>
-          </ul>
-        </div>
+        <FooterCol title="Our products">
+          {liveCategories.map((c) => (
+            <li key={c.slug}>
+              <Link className="nav-link py-1.5 inline-block" to={`/menu/${c.slug}`}>{c.name}</Link>
+            </li>
+          ))}
+        </FooterCol>
+        <FooterCol title="Quick links">
+          <li><Link className="nav-link py-1.5 inline-block" to="/menu">Full menu</Link></li>
+          <li><Link className="nav-link py-1.5 inline-block" to="/outlets">Outlets</Link></li>
+          <li><Link className="nav-link py-1.5 inline-block" to="/about">About Spunchy</Link></li>
+          <li><Link className="nav-link py-1.5 inline-block" to="/checkout">Checkout</Link></li>
+        </FooterCol>
+        <FooterCol title="Outlets">
+          {business.outlets.map((o) => (
+            <li key={o.id}>
+              <a className="nav-link py-1.5 inline-block" href={mapsSearch(o.name)} target="_blank" rel="noopener noreferrer">{o.name}</a>
+            </li>
+          ))}
+        </FooterCol>
+        <FooterCol title="Get in touch">
+          <li><a className="nav-link py-1.5 inline-block" href={`tel:${business.phone.tel}`}>{business.phone.display}</a></li>
+          {socials.map((s) => (
+            <li key={s.label}>
+              <a className="nav-link py-1.5 inline-block" href={s.href} target="_blank" rel="noopener noreferrer">{s.label}</a>
+            </li>
+          ))}
+          {business.pickme && (
+            <li><a className="nav-link py-1.5 inline-block" href={business.pickme} target="_blank" rel="noopener noreferrer">Order on PickMe Food</a></li>
+          )}
+        </FooterCol>
       </div>
 
-      <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-icing/15 pt-6 font-display text-micro text-on-night-soft">
-        <p>© {year} Spunchy Pastry &amp; Bakery, Sri Lanka</p>
-        <a href="#top" onClick={(e) => { e.preventDefault(); scrollToTarget('#top') }} className="inline-flex min-h-11 items-center rounded-roundel border border-icing/30 px-4 text-icing">
-          Back to top
-        </a>
+      <div className="relative mt-16">
+        <p className="punch text-center text-[24vw] leading-none text-maroon uppercase select-none" aria-hidden="true">Spunchy</p>
+        <Swash className="footer-swash absolute inset-x-0 bottom-[-6%] mx-auto w-[70%]" />
+      </div>
+
+      <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-icing/15 pt-6 font-display text-micro text-on-night-soft">
+        <p>© {new Date().getFullYear()} Spunchy Pastry &amp; Bakery, Sri Lanka</p>
+        <p>Prices in Sri Lankan rupees. Availability varies by outlet.</p>
       </div>
     </footer>
+  )
+}
+
+function FooterCol({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <div className="font-display text-small">
+      <h2 className="mb-3 text-small font-bold text-gold">{title}</h2>
+      <ul>{children}</ul>
+    </div>
   )
 }

@@ -73,9 +73,13 @@
 }
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
   /* Cursor, intro and wipes read these at runtime */
   --grain-opacity: 0.045;
+  --header-h: 4.5rem;
+}
+@media (min-width: 768px) {
+  :root { --header-h: 5.25rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

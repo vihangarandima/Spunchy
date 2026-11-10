@@ -1,6 +1,5 @@
 import { useRef } from 'react'
 import { Img } from '../components/Img'
-import { Button } from '../components/Button'
 import { business } from '../content/business'
 import { gsap, ease } from '../lib/motion'
 import { useGsap } from '../hooks/useGsap'
@@ -8,6 +7,8 @@ import { useGsap } from '../hooks/useGsap'
 // Instagram's embed script proved unreliable (blocked by ad blockers, privacy settings and
 // slow networks) and heavy, so the section links to the real posts instead of embedding
 // them, beside a mosaic of Spunchy's own shop photos.
+const IG_HANDLE = '@spunchy.lk'
+
 const POSTS = [
   { url: 'https://www.instagram.com/p/Denxm_kMypr/', label: 'Viral Choco Brick', date: '17 October 2026' },
   { url: 'https://www.instagram.com/p/DfWcyapsnL4/', label: 'Latest post', date: '4 November 2026' },
@@ -40,7 +41,7 @@ export function Instagram() {
         <div>
           <h2 id="ig-title" className="text-[clamp(2.2rem,3.6vw,3.75rem)] font-extrabold whitespace-nowrap text-icing">
             <span className="block font-serif text-lede font-normal text-on-night-soft italic">Fresh from the feed</span>
-            {business.instagram.handle}
+            {IG_HANDLE}
           </h2>
           <ul className="mt-10 border-t border-icing/15">
             {POSTS.map((p) => (
@@ -53,15 +54,15 @@ export function Instagram() {
             ))}
           </ul>
           <div className="mt-8">
-            <Button href={business.instagram.url} external>Follow {business.instagram.handle}</Button>
+            <a href={business.socials.instagram} target="_blank" rel="noopener noreferrer" className="btn btn-gold">Follow {IG_HANDLE}</a>
           </div>
         </div>
 
         <a
-          href={business.instagram.url}
+          href={business.socials.instagram}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`Spunchy on Instagram, ${business.instagram.handle}`}
+          aria-label={`Spunchy on Instagram, ${IG_HANDLE}`}
           className="ig-mosaic grid auto-rows-[9rem] grid-cols-2 gap-3 sm:auto-rows-[11rem] md:grid-cols-3 md:gap-4"
         >
           {MOSAIC.map((m) => (
