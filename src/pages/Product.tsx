@@ -60,7 +60,7 @@ function ProductView({ slug }: { slug: string }) {
               <ProductArt product={p} sizes="(min-width: 768px) 45vw, 90vw" priority />
             </div>
           </div>
-          {p.image?.startsWith('art:') && <p className="mt-2 text-center text-micro text-ink/50">Illustration. Product photo coming soon.</p>}
+          {p.stock && <p className="mt-2 text-center text-micro text-ink/55">Photo for illustration. Spunchy’s {p.name.toLowerCase()} may look a little different.</p>}
         </div>
 
         <div>

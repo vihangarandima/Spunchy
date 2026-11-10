@@ -8,6 +8,7 @@ import { heroSlides, type HeroSlide } from '../content/heroSlides'
 import { productBySlug, formatPrice, type Product } from '../content/products'
 import { ProductArt } from '../components/ProductArt'
 import { Particle } from '../components/Particle'
+import { BgVideo } from '../components/BgVideo'
 import { useCart } from '../store/cart'
 import { useUi } from '../store/ui'
 import { flyToCart } from '../lib/flyToCart'
@@ -267,6 +268,9 @@ export function HeroCabinet({ ready }: { ready: boolean }) {
       {/* Backgrounds */}
       {heroSlides.map((s, i) => (
         <div key={s.id} data-bg={i} className="absolute inset-0" style={{ background: s.background, ...(i === 0 ? { zIndex: 1 } : { visibility: 'hidden', opacity: 0 }) }} aria-hidden="true">
+          {s.video && (
+            <BgVideo name={s.video.name} active={i === index} className="absolute inset-0 h-full w-full" style={{ mixBlendMode: s.video.blend, opacity: s.video.opacity }} />
+          )}
           {s.ambient === 'spotlight' && <div className="spot-swing absolute inset-x-0 top-0 h-[80%]" />}
           <div data-depth="5" className="absolute inset-0 bg-[radial-gradient(35%_45%_at_62%_48%,rgb(255_255_255/0.22),transparent_70%)]" />
         </div>

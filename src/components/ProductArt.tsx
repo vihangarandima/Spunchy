@@ -1,9 +1,6 @@
 // A product's picture, wherever it appears: a cut-out (floats on its disc), a photo
-// (cropped into the disc), the drawn Choco Brick, or a typographic stand-in when there is no
-// photo yet. Never a stock photo.
+// (cropped into the disc), or a typographic stand-in when there is no photo yet.
 import { Img } from './Img'
-import { ChocoBrickArt } from './ChocoBrickArt'
-import { BunArt } from './BunArt'
 import type { Product } from '../content/products'
 
 type Props = {
@@ -15,8 +12,6 @@ type Props = {
 
 export function ProductArt({ product, sizes, className = '', priority }: Props) {
   const { image, cutout, name } = product
-  if (image === 'art:choco-brick') return <ChocoBrickArt className={`product-art h-full w-full ${className}`} />
-  if (image === 'art:tandoori-bun') return <BunArt className={`product-art h-full w-full ${className}`} />
   if (!image) {
     return (
       <div className={`product-art grid h-full w-full place-items-center ${className}`} aria-hidden="true">

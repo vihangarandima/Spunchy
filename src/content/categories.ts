@@ -14,10 +14,10 @@ export type Category = {
 
 export const categories: Category[] = [
   { slug: 'celebration-cakes', name: 'Celebration Cakes', short: 'Rosettes, gateaux and the cake for the day', disc: '#F3C9CF', discInk: 'dark', image: 'cake-rosettes-cut' },
-  { slug: 'signature', name: 'Spunchy Signatures', short: 'The viral ones', disc: '#F7B836', discInk: 'dark', image: null },
+  { slug: 'signature', name: 'Spunchy Signatures', short: 'The viral ones', disc: '#F7B836', discInk: 'dark', image: 'stock-choco-brick-cut' },
   { slug: 'slices', name: 'Slices & Pastries', short: 'A slice of heaven in every bite', disc: '#E7C6D6', discInk: 'dark', image: 'fruit-tart-cut' },
   { slug: 'savory', name: 'Savory', short: 'Crispy, crunchy, crave-worthy', disc: '#F2D2A9', discInk: 'dark', image: 'buns-triangle-cut' },
-  { slug: 'bakery', name: 'Bread & Bakery', short: 'Soft, fluffy & fresh every morning', disc: '#EAD7BF', discInk: 'dark', image: 'bread' },
+  { slug: 'bakery', name: 'Bread & Bakery', short: 'Soft, fluffy & fresh every morning', disc: '#EAD7BF', discInk: 'dark', image: 'stock-sandwich-bread' },
   // Hidden while empty: only shown if Spunchy confirms they serve drinks.
   { slug: 'drinks', name: 'Drinks', short: 'Something to go with it', disc: '#D9C2B0', discInk: 'dark', image: null },
 ]

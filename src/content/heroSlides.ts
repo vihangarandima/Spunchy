@@ -18,6 +18,8 @@ export type HeroSlide = {
   productScale?: number
   particles: ParticleKind[]
   ambient?: 'spotlight' | 'steam' | 'flour' | 'shine'
+  /** Background loop from public/media, blended into the slide colour. */
+  video?: { name: string; blend: 'multiply' | 'soft-light' | 'screen' | 'luminosity'; opacity: number }
   primary: { label: string; action: 'add' | 'link'; to?: string }
   secondary: { label: string; to: string }
 }
@@ -47,6 +49,7 @@ export const heroSlides: HeroSlide[] = [
     copy: 'Dense, fudgy and cut open to show the inside. The one everyone is posting.',
     productId: 'choco-brick',
     productScale: 0.95,
+    video: { name: 'chocolate-fall', blend: 'multiply', opacity: 0.32 },
     particles: ['shard', 'shard', 'crumb', 'sprinkle'],
     primary: { label: 'Add', action: 'add' },
     secondary: { label: 'All signatures', to: '/menu/signature' },
@@ -60,6 +63,7 @@ export const heroSlides: HeroSlide[] = [
     headline: ['Crispy. Crunchy.', 'Crave-worthy'],
     copy: 'Spicy tandoori chicken in a soft glazed bun, straight from the savory shelf.',
     productId: 'tandoori-chicken-bun',
+    productScale: 0.82,
     particles: ['sesame', 'sesame', 'chilli', 'crumb'],
     ambient: 'steam',
     primary: { label: 'Add', action: 'add' },

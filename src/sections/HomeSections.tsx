@@ -5,8 +5,8 @@ import { useRef } from 'react'
 import { Link } from 'react-router'
 import { ProductCard } from '../components/ProductCard'
 import { ProductArt } from '../components/ProductArt'
-import { Img } from '../components/Img'
 import { Swash } from '../components/Swash'
+import { BgVideo } from '../components/BgVideo'
 import { liveCategories, products, productsIn, bestSellers, productBySlug } from '../content/products'
 import { business, mapsSearch } from '../content/business'
 import { gsap, ease, mq, ScrollTrigger, SplitText } from '../lib/motion'
@@ -162,7 +162,9 @@ export function PosterBand() {
     })
   })
   return (
-    <section ref={root} aria-label="Cake is the language of love" className="relative grid h-[100svh] min-h-[560px] place-items-center overflow-hidden bg-[radial-gradient(60%_60%_at_50%_45%,#5a101b,#22060b)] px-(--space-gutter) text-icing">
+    <section ref={root} aria-label="Cake is the language of love" className="relative grid h-[100svh] min-h-[560px] place-items-center overflow-hidden bg-night-deep px-(--space-gutter) text-icing">
+      <BgVideo name="candles" className="absolute inset-0 h-full w-full opacity-60" />
+      <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_45%,rgb(90_16_27/0.55),rgb(34_6_11/0.92))]" aria-hidden="true" />
       <div className="relative w-full text-center">
         <p className="poster-lede lede text-on-night-soft">Cake is the language of</p>
         <div className="poster-word-wrap relative mx-auto">
@@ -211,8 +213,14 @@ const VALUES = [
 
 export function ValueStrip() {
   return (
-    <section aria-label="Why Spunchy" className="border-y border-ink/10 px-(--space-gutter) py-12">
-      <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+    <section aria-label="Why Spunchy" className="relative overflow-hidden bg-night-deep px-(--space-gutter) py-20 text-icing md:py-28">
+      <BgVideo name="pastries" className="absolute inset-0 h-full w-full opacity-45" />
+      <div className="absolute inset-0 bg-gradient-to-r from-night-deep via-night-deep/80 to-night-deep/40" aria-hidden="true" />
+      <h2 className="relative max-w-xl text-h1 font-extrabold">
+        <span className="lede block font-normal text-on-night-soft">Out of the oven</span>
+        Baked fresh, every morning
+      </h2>
+      <ul className="relative mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {VALUES.map((v) => (
           <li key={v.title} className="flex items-start gap-4">
             <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-maroon text-gold">
@@ -222,7 +230,7 @@ export function ValueStrip() {
             </span>
             <span>
               <span className="block font-display text-h3 font-bold">{v.title}</span>
-              <span className="block text-small text-ink/70">{v.line}</span>
+              <span className="block text-small text-on-night-soft">{v.line}</span>
             </span>
           </li>
         ))}
@@ -243,7 +251,8 @@ export function OutletsSection({ heading = true }: { heading?: boolean }) {
   })
   return (
     <section ref={root} aria-labelledby="outlets-title" className="relative overflow-hidden bg-night px-(--space-gutter) py-20 text-icing md:py-28">
-      <Img id="oak-wall" alt="" sizes="100vw" className="absolute inset-0 opacity-15" imgClassName="h-full w-full object-cover" />
+      <BgVideo name="bakery-display" className="absolute inset-0 h-full w-full opacity-25" />
+      <div className="absolute inset-0 bg-gradient-to-b from-night/70 to-night" aria-hidden="true" />
       <div className="relative">
         {heading && (
           <h2 id="outlets-title" className="text-h1 font-extrabold">

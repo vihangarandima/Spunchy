@@ -1,8 +1,9 @@
 // The menu. Names and prices (LKR) come from Spunchy's in-store price labels (photos of
 // 2026-11-08) and their Instagram promos. NOTHING here is invented: a price of `null`
 // shows "Ask in store" and the item cannot be added to the cart until the client confirms it.
-// image: an id from src/assets/images/manifest.json, 'art:…' for a drawn stand-in until photos arrive,
-// or null for a typographic disc.
+// image: an id from src/assets/images/manifest.json, or null for a typographic disc.
+// stock: true marks a licensed stock stand-in (docs/premium/credits.md) until Spunchy's own
+// photo is supplied; the product page says "Photo for illustration".
 
 import { categories, type CategorySlug } from './categories'
 
@@ -25,6 +26,8 @@ export type Product = {
   tags?: ('bestseller' | 'new' | 'viral' | 'veg' | 'spicy')[]
   available: boolean
   source: 'label' | 'instagram' | 'store' | 'client'
+  /** The photo is a licensed stock stand-in, not Spunchy's own product. Labelled on the page. */
+  stock?: boolean
 }
 
 const p = (x: Omit<Product, 'slug' | 'available' | 'cutout'> & Partial<Pick<Product, 'available' | 'cutout'>>): Product => ({
@@ -37,11 +40,11 @@ const p = (x: Omit<Product, 'slug' | 'available' | 'cutout'> & Partial<Pick<Prod
 export const products: Product[] = [
   // Celebration cakes: sizes and prices to be supplied by the client.
   p({ id: 'rosette-celebration-cake', name: 'Rosette Celebration Cake', category: 'celebration-cakes', description: 'Buttercream rosettes in pink, ivory and plum. The cake in every Spunchy cabinet.', image: 'cake-rosettes-cut', cutout: true, price: null, options: [{ label: '500 g', price: null }, { label: '1 kg', price: null }, { label: '2 kg', price: null }], allowsMessage: true, tags: ['bestseller'], source: 'store' }),
-  p({ id: 'rainbow-cake', name: 'Rainbow Cake', category: 'celebration-cakes', description: 'Layers of colour for birthdays.', image: null, price: null, allowsMessage: true, source: 'instagram' }),
-  p({ id: 'chocolate-gateau', name: 'Chocolate Gateau', category: 'celebration-cakes', description: 'Whole chocolate gateau, made to order.', image: 'tray-choc-gateau', price: null, allowsMessage: true, source: 'store' }),
+  p({ id: 'rainbow-cake', name: 'Rainbow Cake', category: 'celebration-cakes', description: 'Layers of colour for birthdays.', image: 'stock-rainbow-cake', stock: true, price: null, allowsMessage: true, source: 'instagram' }),
+  p({ id: 'chocolate-gateau', name: 'Chocolate Gateau', category: 'celebration-cakes', description: 'Whole chocolate gateau, made to order.', image: 'stock-chocolate-gateau', stock: true, price: null, allowsMessage: true, source: 'store' }),
 
   // Signatures
-  p({ id: 'choco-brick', name: 'Choco Brick', category: 'signature', description: 'The viral one. Dense, fudgy, cut open to show the inside.', image: 'art:choco-brick', cutout: true, price: 350, tags: ['viral', 'bestseller'], source: 'instagram' }),
+  p({ id: 'choco-brick', name: 'Choco Brick', category: 'signature', description: 'The viral one. Dense, fudgy, cut open to show the inside.', image: 'stock-choco-brick-cut', cutout: true, stock: true, price: 350, tags: ['viral', 'bestseller'], source: 'instagram' }),
 
   // Slices & pastries (in-store labels)
   p({ id: 'fruit-tart', name: 'Fruit Tart', category: 'slices', description: 'Glossy fruit on vanilla custard in a crisp shell.', image: 'fruit-tart-cut', cutout: true, price: 290, tags: ['bestseller'], source: 'label' }),
@@ -52,16 +55,16 @@ export const products: Product[] = [
   p({ id: 'mousse', name: 'Mousse', category: 'slices', description: null, image: 'tray-mousse', price: 280, source: 'label' }),
 
   // Savory
-  p({ id: 'tandoori-chicken-bun', name: 'Tandoori Chicken Bun', category: 'savory', description: 'Spicy tandoori chicken in a soft glazed bun.', image: 'art:tandoori-bun', cutout: true, price: 290, tags: ['bestseller', 'spicy'], source: 'instagram' }),
-  p({ id: 'cheesy-chicken-roll', name: 'Cheesy Chicken Roll', category: 'savory', description: null, image: null, price: 200, source: 'label' }),
+  p({ id: 'tandoori-chicken-bun', name: 'Tandoori Chicken Bun', category: 'savory', description: 'Spicy tandoori chicken in a soft glazed bun.', image: 'stock-tandoori-bun-cut', cutout: true, stock: true, price: 290, tags: ['bestseller', 'spicy'], source: 'instagram' }),
+  p({ id: 'cheesy-chicken-roll', name: 'Cheesy Chicken Roll', category: 'savory', description: null, image: 'stock-cheesy-chicken-roll', stock: true, price: 200, source: 'label' }),
   p({ id: 'triangle-bun', name: 'Triangle Bun', category: 'savory', description: 'Soft, fluffy and filled.', image: 'buns-triangle-cut', cutout: true, price: null, source: 'store' }),
-  p({ id: 'smoke-chicken-roll', name: 'Smoke Chicken Roll', category: 'savory', description: null, image: null, price: null, source: 'instagram' }),
+  p({ id: 'smoke-chicken-roll', name: 'Smoke Chicken Roll', category: 'savory', description: null, image: 'stock-smoke-chicken-roll', stock: true, price: null, source: 'instagram' }),
   p({ id: 'cutlet', name: 'Cutlet', category: 'savory', description: null, image: null, price: null, source: 'instagram' }),
 
   // Bread & bakery
-  p({ id: 'sandwich-bread', name: 'Sandwich Bread', category: 'bakery', description: 'Soft white loaf, baked every morning.', image: 'bread', price: 200, source: 'label' }),
+  p({ id: 'sandwich-bread', name: 'Sandwich Bread', category: 'bakery', description: 'Soft white loaf, baked every morning.', image: 'stock-sandwich-bread', stock: true, price: 200, source: 'label' }),
   p({ id: 'sugar-bun-pack', name: 'Sugar Bun Pack', category: 'bakery', description: null, image: null, price: null, source: 'store' }),
-  p({ id: 'cookies', name: 'Cookies', category: 'bakery', description: null, image: null, price: null, source: 'store' }),
+  p({ id: 'cookies', name: 'Cookies', category: 'bakery', description: null, image: 'stock-cookies', stock: true, price: null, source: 'store' }),
 ]
 
 export const productBySlug = (slug: string) => products.find((x) => x.slug === slug)

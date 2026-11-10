@@ -50,4 +50,15 @@ export const images = [
   { id: 'logo-roundel', src: '../reference/ig-avatar.jpg', up: 4, grade: 'none' },
   // Oak plank wall, used as a texture
   { id: 'oak-wall', src: 'visit-poster-love-wall.jpg', crop: [715, 140, 245, 960], up: 4, grade: 'photo' },
+  // Stock photos (Unsplash licence: free for commercial use, no attribution required).
+  // Stand-ins until Spunchy supplies its own product shots; see docs/premium/credits.md.
+  // The product pages label them "Photo for illustration".
+  { id: 'stock-choco-brick', src: 'stock/choco-brick.jpg', crop: [330, 280, 1760, 2340], up: 1, grade: 'none', cutout: true },
+  { id: 'stock-tandoori-bun', src: 'stock/tandoori-bun.jpg', crop: [600, 840, 1200, 1200], up: 1, grade: 'none', cutout: true },
+  { id: 'stock-sandwich-bread', src: 'stock/sandwich-bread.jpg', crop: [300, 0, 1467, 1467], up: 1, grade: 'none' },
+  { id: 'stock-rainbow-cake', src: 'stock/rainbow-cake.jpg', crop: [100, 0, 1467, 1467], up: 1, grade: 'none' },
+  { id: 'stock-chocolate-gateau', src: 'stock/chocolate-gateau.jpg', crop: [220, 0, 1760, 1760], up: 1, grade: 'none' },
+  { id: 'stock-cheesy-chicken-roll', src: 'stock/cheesy-chicken-roll.jpg', crop: [274, 0, 1652, 1652], up: 1, grade: 'none' },
+  { id: 'stock-smoke-chicken-roll', src: 'stock/smoke-chicken-roll.jpg', crop: [366, 0, 1467, 1467], up: 1, grade: 'none' },
+  { id: 'stock-cookies', src: 'stock/cookies.jpg', up: 1, grade: 'none' },
 ]

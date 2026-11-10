@@ -252,5 +252,109 @@
       960
     ],
     "lqip": "data:image/webp;base64,UklGRtIAAABXRUJQVlA4IMYAAACwBwCdASoYAF4APu1yrlIppqQipXgMATAdiWMAxcgFxWbHGzhu0rjT7Quj+rqWNsRW65UDWcOXcLhzb3Vivof9SaCR56GAAP6mnIVfh+Ot/vKgsxNDh95HWDtMKV3R0G+OXQ/BhyfhM7weUmPXewUuX52CaOc0MmvFlYalMAmzWc7GCx1y579ZHQaYWRrCbxVRANfMNqcfJr5STaqDPGBrkiNU5F8xya4HqsbC5LdshjELieN96ylFpg6JXvfHXudPgUAAAAA="
+  },
+  "stock-choco-brick": {
+    "width": 1760,
+    "height": 2340,
+    "widths": [
+      640,
+      960,
+      1280,
+      1760
+    ],
+    "lqip": "data:image/webp;base64,UklGRjABAABXRUJQVlA4ICQBAADQBgCdASoYACAAPu1mqU2ppaOiMAgBMB2JbACxHxMAH+U1gTPol3LyYeL32bVJDihj7t8/J69ufsmdRpUx8GAA/u/XmIIMVMQh1kd+ANOlIzCH94OzJfiWi0r7vZf2BZ9V7qBx9uYfT6VVmDQ/C0dthYg27kgnNoxguW6WFYLW6xQMlcIOnsJ7iVhM8Y/bIUlsp3WNoIqmZiGSndh9l5jDFpB07oMgUqmybBjvJJvdQh4cXsOi+bOoaeHmYUQlUTjR35S7mSIvsKq4fVXMdvRHuGPh5cUdlBOhmfpdk18YBTx+I5uMNoq3Ni4DVLUVbnvWNqvRtnyjH18yDS//wlIZO1s/8afyZt2zQrgW5nCGm2h2WouUAbI/yfWiFO87LZnzgAAA"
+  },
+  "stock-choco-brick-cut": {
+    "width": 1671,
+    "height": 2120,
+    "widths": [
+      640,
+      960,
+      1280,
+      1671
+    ],
+    "lqip": "data:image/webp;base64,UklGRqYCAABXRUJQVlA4WAoAAAAQAAAAFwAAHQAAQUxQSEQBAAABkGttu2k735zz2KoQ27adlOcCYttOmcrmDdi2ndJ2UtmY//y/eK5LiIgJwN+tQ92Nly8dfPWsBVIc/m5cCtzsD1RS+XU0rDMATIo1KD3KICJC4aexLeGcdQau24Rr9Mq/qvDrBMCgbPI5oQr/rRK4uUOn+c+pwQf+t3reWcPghdGBd/oxMEHhiTpvqImcwg5KAp6bMSEJ9ZyBtqTGKH9syEHeI4a4wXCo8ZoaoWQ7OCymMOp7fdjMuwxxXyrD4gAl7mUWDCqoMYFXHQx6KzVCuB2ppj9VGRn4uBnsSnpGKz8syH9EjWPwnLeXkgA9Z0+jT0DpW43ld03ieUn+QXr9H1Vq+M5NQOps0fA3DSJBVdVPgLGY+Z2iqiL8U+X1ykowMKno/ZxKkt9unR++gjOKYPBnChreevX6y/aKehbIqZ8FawFWUDggPAEAAHAHAJ0BKhgAHgA+7WCnTamlIyIwCAEwHYloAJ0zDkK3RC2/2aBlgwwTPoxXHHZtL578N/eZVvRV9oYCq7AqIDHltWkgAP5ZNsNZibopX1jMke0aVgBuAvxt4LncKgsmm67xxLS+uYZWnaxY2FxA+eZz5y87lZFI9/Mni+RnCF21WhbwEeWVTau7FXOeP7Vg2bH7TV8k/rHF+WcclejZkMCTtvu1k7WkSvwQYvjTLsEndPwpAGGgMLqxO+RiY7trUHxT84CSiWXhwJKyPozd2nxdfVfDtFgkJFEn+U/3PYeuM51oj4QuBfQzaccm6FTPaK6o06ib7iPmNG5zoHg1Cn0wAf/lA5dtMr+h9fux5Om99se9eK3Xok4hu8AwdxDSPgOqSt62SA3SAACOWZ/PBkNs1D6r3LTBMOcAAAA="
+  },
+  "stock-tandoori-bun": {
+    "width": 1200,
+    "height": 1200,
+    "widths": [
+      640,
+      960,
+      1200
+    ],
+    "lqip": "data:image/webp;base64,UklGRgABAABXRUJQVlA4IPQAAACQBQCdASoYABgAPu1ur1IppiQiqAgBMB2JaACdL3+ajwbQYyuYLJqLjCJfSOefRUmcXBSBcAD+TS0pau+Kqrv38xphPxfY7TCK7TAgawLdqZyhHm32nhKpmHHqZRpT4BhXNIPZmpmYi7aI0AQVwUqKJlMgt4qrh//b+AaKNlpJ1g9VtgbsusFvPjhOjwgwJFbkKOnrF76PfvHqs07n7SwqM7EwZDhsJxAfXp5wy7zE9OJTtW0kd5wQa8wav9+aoIUXjuKmsC9GcWHGsp/ascECL1jhLZTyBXEU0kMAnKlsGNerGHWUDpyFg1XR+LPZIrd1AAAA"
+  },
+  "stock-tandoori-bun-cut": {
+    "width": 1094,
+    "height": 976,
+    "widths": [
+      640,
+      960
+    ],
+    "lqip": "data:image/webp;base64,UklGRkICAABXRUJQVlA4WAoAAAAQAAAAFwAAFAAAQUxQSO4AAAABkKNt27FH9/N9sa2ee1DlLMJGnawg6cwF2PZMZXsqs7Pxvu9zj79vCRExAQDgI7Jq4uK9a3fPr88Vw/c9/Cm+ZA5T+afS9kPEAyA+2t7QGeucs8bww+n1AngQiRiiWv5bnfJRPjxELdMo/1ftD15OAgb5QxnUcAAVVpWBlS9yVmkZomX9Fbpw5l5Rw3C89ZWhKt89pobheH+DNgzL/daw+vxztMEcX+ahmSaYYS8gszQa4AdnIYL4E1qr/1L7g0fxEHhIPEOnxqmqOqOOO0kQAB5S6474d+W3Wx1REPwpApRPPfz06cunuzMlEBEAVlA4IC4BAACwBgCdASoYABUAPu1ur1IppiQiqAgBMB2JbACdMoRwMNNkAP0z60kiJweGr9kfp7PmlPiU2T3yQz2vMVDhMAD+cwShvBJqSxQpJWFZsupeM0l972k7VNBg7jhubbUbgNm2nID9BjvJ8fXwO3+ynYUKZJboIL3hPVbNTB+LKrqa0TeITjTgXXEizIJ42UxT99qydHJzjl9DhA842A+Z4ej7ZfL/0lz2uvPmPK04z0e9YaOuMAlvMuiGT9G8T7uJotERWGnQREviKffFxIR3XaDDuqIELr8jLYgzJw2KEnvo2fsrar62C9kYoIROHisQa1HjUUpCTaPQ6/pBxdk9n//TXph2qHfwHPXr/N1uZADdf/k5Msmr0fmD9fSR2/8vziIDmrj/ByYl2N/83diIAA=="
+  },
+  "stock-sandwich-bread": {
+    "width": 1467,
+    "height": 1467,
+    "widths": [
+      640,
+      960,
+      1280
+    ],
+    "lqip": "data:image/webp;base64,UklGRtIAAABXRUJQVlA4IMYAAAAQBgCdASoYABgAPu1sqk8ppiOiMBgIATAdiWwAnTKEdXD8+f4Bc89Q7sAuy0o9ePSwmVzvUwfZ5eAA/sP5ZTkeOw3vrFOpfK7voXD78S7Pym/9/tpne2Nm5dLC0jPpNaoiv2p3qpcR23pmUzaBZKsdu2oj9hsGTF3OvseBwXz34T8KqBi9ZLskiu2tLg/Q57VGqwgwi7tNi4TxU7zpxbaDcmm728HeOVXpWSbmv/vKnlaMHLgDkOrYUpJTpvdGXFFX9CxEAAA="
+  },
+  "stock-rainbow-cake": {
+    "width": 1467,
+    "height": 1467,
+    "widths": [
+      640,
+      960,
+      1280
+    ],
+    "lqip": "data:image/webp;base64,UklGRggBAABXRUJQVlA4IPwAAABwBQCdASoYABgAPu1sqlGppaOiqAqpMB2JbACdMyX00vQAUfmnE4gULJR4fPubt5s4R5wAAP0Cg5YFm0gIcH/8qmEdAXB9nqaLE0YkV/t7bmH92KW3qvvqFDO/CowY9g9Fne+AOBiz5FYcON+ij01jgrY2J4/bC71uPQOcyeTUIjkabL6z1qJEjDK6bFlFXtOg6GIgCTl8IMaQhxvlyW3Gh625duUi2++3gsWZja/Ky+9PbYXCmm0ELWbf87QTlUUqcPC7Xal67NhmYXqYNFhcqnu/T4WUakK0qz0Z7FLcpeNqDXUQfGuBxvHAdsX4CNEYgmYIOOd2wLqwAAA="
+  },
+  "stock-chocolate-gateau": {
+    "width": 1760,
+    "height": 1760,
+    "widths": [
+      640,
+      960,
+      1280,
+      1760
+    ],
+    "lqip": "data:image/webp;base64,UklGRtQAAABXRUJQVlA4IMgAAADQBACdASoYABgAPu1qqFAppaOiqA1RMB2JQBOgMZyKuD4U3boif5RA9twUhtGiAAD+g0mFgVsKB7lwe+nUWIB+WjRQ4zbrZ8aKJZsHcAPCbB5/7ueAPtu5vshgewbSBNmSSRYFIZBHdyZiNPbh+Nv+oRvgbp3t3pB6uRlIoIblDNvh7Xw92h/WhhITQ5QS/1CqHTe860ufGiYINFaoEmwZPmCjL/QiLRvR+7fmbeC5UkVlwHw/nbTH6FqnZViGG+RY9DaE4ziAAA=="
+  },
+  "stock-cheesy-chicken-roll": {
+    "width": 1652,
+    "height": 1652,
+    "widths": [
+      640,
+      960,
+      1280,
+      1652
+    ],
+    "lqip": "data:image/webp;base64,UklGRggBAABXRUJQVlA4IPwAAACwBgCdASoYABgAPu1sqlEppaOiqAqpMB2JbACdMzQwMIBIgR6WQzSGxgxGFQ9BytY3WqVtSzrHc1kG8fWWAAD4Xc3ooWtaBOK7l7aOdXK6VbpGS/QdCBnzOr7cLMTwguQdIgbtFn8nRwMBGd1CHh2MhMPr9R1Y425mLuRQbARm/KeDA9eyO5k2Z3L53LSe5dh51qgHLkb1bdbFYdbBv1wmk10CbJSzFvv4qmnH4JVtifhULMJpjSboS5PvLVkKo+lIw0rCYhnxXw1hk1eRFujY1/XVFsxfv/mSN3hKyIYVNdufug+21BDadhDOhSc2/GzWvNx81lvezT0AAAA="
+  },
+  "stock-smoke-chicken-roll": {
+    "width": 1467,
+    "height": 1467,
+    "widths": [
+      640,
+      960,
+      1280
+    ],
+    "lqip": "data:image/webp;base64,UklGRkABAABXRUJQVlA4IDQBAABwBgCdASoYABgAPu1orFCppaQiqAqpMB2JbACdMoR/UklPd0RrWm7oYmIunDNkR5jOHD0O5zqQaktUvoAA/bYcErxiKk80q7Kqtjxhfn6dpTAhu/nSSwZ8eVbFT0oedRTDk7KqsMYloV97d7ZkhwbOXJB89RXdoxROfDwNgWbjcJ9KYnkXlX+OvLEozM8US/Q/5j9qSn8WeDk2wNRezY3ms1IK8YxGeT0+N+XZmdgmN92W1asvRbYVhhY9tE8LPSws0cDcnNbLAyrBVjKMxoo2LC51XISZSUy9cJsfK3UFqTH47XqcGjmR8YIBKz9MoF39L+uYu90NPfB+zQ+DavctcJA9WgsWGrgmrRNd4ODQyTvf/XAtoHek4bz5wY/5lNJEtZVZiaLUbdhgQUxxoThD2AAAAA=="
+  },
+  "stock-cookies": {
+    "width": 2200,
+    "height": 2200,
+    "widths": [
+      640,
+      960,
+      1280,
+      1920
+    ],
+    "lqip": "data:image/webp;base64,UklGRrQAAABXRUJQVlA4IKgAAABwBACdASoYABgAPu1iqlAppSOisBgIATAdiWYANQ6AcrdK7qq6CkKB6KK/OAD+9B3ZauNsKzxe0ZOlKw7hyCeF/gDfEPxv4gtZbantM0Cr8TuvjKG6i6S8JTYS3f1I0VJOyhkvpRH+inHXHQRnmKJCEpgvOnJLjVYYWK59HrrEo3jV1OCObpxTH2SSL+7DNCYcRaCAauZeXIcC77+8jTiQ7YZHpT/SgAA="
   }
 }
