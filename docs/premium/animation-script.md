@@ -4,6 +4,13 @@ The motion script for the premium Spunchy site. Read it like a film script: ever
 
 ---
 
+> **Revision, 2026-11-10 (client feedback: "messy, childish").** The built hero drops three of
+> the reference moves: the ghost headline (R4), the tilted peek-in neighbours (R5) and the
+> particle burst (R7). Slides now glide in (8% of the width, scale 0.94 → 1, no rotation), the
+> product floats ±6 px without tilting, and the motion blur is lighter (8 px). The colour morph,
+> headline mask reveal, autoplay dots, swipe and keys stay. Sections below still describe the
+> original plan where they mention those three moves.
+
 ## 0. What we are taking from the reference
 
 Reference: the Pinterest pin "Great Coffee Deserves a Great Website" (a 13-second BridgeWeb promo, 360×640 video of a laptop showing a coffee-shop site). I stepped through it frame by frame. The laptop and the room are only the promo's framing. **The website on the screen is what we copy.** Its moves are:

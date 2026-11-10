@@ -249,9 +249,8 @@
     font-size: min(6.5rem, calc((100vw - 2 * var(--space-gutter)) / (var(--chars) * 0.5)));
   }
   @media (min-width: 768px) {
-    .hero-headline { font-size: min(10.5rem, calc(48vw / (var(--chars) * 0.5))); }
+    .hero-headline { font-size: min(9.5rem, calc(42vw / (var(--chars) * 0.5))); }
   }
-  .hero-ghost { font-size: min(10.5rem, calc(44vw / (var(--chars) * 0.5))); }
   .hero-arrow {
     display: grid;
     height: 3.5rem;
@@ -276,19 +275,6 @@
   }
   .hero-arrow:hover::before { transform: translateX(0) skewX(-12deg); }
   .hero-arrow:active { transform: scale(0.92); }
-  .peek-in { animation: peek-in 900ms var(--ease-swash) both; }
-  @keyframes peek-in { from { opacity: 0; translate: 0 40px; } }
-  .spot-swing {
-    background: radial-gradient(40% 70% at 50% 0%, rgb(247 184 54 / 0.22), transparent 70%);
-    transform-origin: 50% 0;
-    animation: spot-swing 7s ease-in-out infinite alternate;
-  }
-  @keyframes spot-swing { from { transform: rotate(-4deg); } to { transform: rotate(4deg); } }
-  .p-drift { animation: p-drift 5s ease-in-out infinite alternate; }
-  @keyframes p-drift {
-    from { transform: translateY(-8px) rotate(-10deg); }
-    to { transform: translateY(8px) rotate(10deg); }
-  }
   .badge-pop { animation: badge-pop 420ms var(--ease-pop); }
   @keyframes badge-pop { from { transform: scale(1.5); } }
   .whisk { animation: whisk 2.4s ease-in-out infinite; transform-origin: 50% 95%; }
@@ -299,8 +285,8 @@
     animation: hero-float 6s ease-in-out infinite alternate;
   }
   @keyframes hero-float {
-    from { transform: translateY(-10px) rotate(-1.5deg); }
-    to { transform: translateY(10px) rotate(1.5deg); }
+    from { transform: translateY(-6px); }
+    to { transform: translateY(6px); }
   }
   .hero-shadow {
     animation: hero-shadow 6s ease-in-out infinite alternate;
@@ -337,7 +323,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero-float, .hero-shadow, .steam, .peek-in, .spot-swing, .p-drift, .badge-pop, .whisk { animation: none; }
+    .hero-float, .hero-shadow, .steam, .badge-pop, .whisk { animation: none; }
     .dot-fill.is-running { animation: none; }
     .roll-col { transition: none; }
     .drawer, .toast, .mobile-menu { transition-duration: 1ms !important; }
